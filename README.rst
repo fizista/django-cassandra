@@ -23,7 +23,7 @@ In the settings django:
            
            # Name keyspace 
            # Required!
-           'KEYSPACE': 'django_keyspace',
+           'NAME': 'django_keyspace',
            
            # User, optional 
            # Default: None       
@@ -65,3 +65,26 @@ In the settings django:
            #'TRANSPORT': '',
        }
    }
+   
+What works
+==========
+
+Model fields:
+* CharField
+* IntegerField
+
+Options for the fields:
+* db_index
+* primary_key
+
+What does not work
+==================
+
+Fields:
+* AutoField
+
+Model objects:
+* change the primary key
+
+
+
