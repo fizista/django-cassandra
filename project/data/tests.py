@@ -24,6 +24,9 @@ from django.db.utils import ProgrammingError
 
 from . import models
 
+# !!!!!!!!!!!!!!!!!
+#TODO: batch_create using MISSING
+
 
 def benchmark(test_method, out_file, name, loops):
     """
@@ -214,6 +217,52 @@ class ModelTest(TestCase):
         self.assertEqual(
             datafields_object_db.text_field,
             'abcdABCD')
+
+    def test_benchmark_cassandra(self):
+
+        LOOPS = 10000
+        out_file = 'benchmark_loops_info.txt'
+        file = open(out_file, 'w')
+
+        cursor = connection.cursor()
+        cursor.execute("TRUNCATE data_dataprimary")
+
+        # initial values
+        i = 0
+        loop = 0
+        buffer = []
+        start = datetime.datetime.now()
+
+        template_string = '1' * 10 + '2' * 10 + '3' * 10 + '4' * 10 + '5' * 10 + '6' * 10 + \
+            '=' * 10
+
+        while 1:
+            i += 1
+            data_object = models.DataBenchmark()
+            data_object.id = i
+            template_string_local = template_string + str(i)
+            data_object.data1 = template_string_local
+            data_object.data2 = template_string_local
+            data_object.data3 = template_string_local
+            buffer.append(data_object)
+
+            if not i % LOOPS:
+                loop += 1
+                models.DataBenchmark.objects.bulk_create(buffer)
+                buffer = []
+                end = datetime.datetime.now()
+                time_delta = end - start
+                time_seconds = time_delta.seconds
+                loops_per_sec = LOOPS / time_seconds
+                start = datetime.datetime.now()
+                # loop nr, loops/sek, time delta
+                out_string = '%15d, %10d, %10d' % (loop, loops_per_sec, time_seconds)
+                print(out_string)
+                file.write(out_string + '\n')
+                file.flush()
+
+        file.close()
+
 
     def test_benchmark(self):
 

@@ -55,12 +55,14 @@ DATABASES = {
 #        'NAME': 'django_keyspace',
 #        'ENGINE': 'django.db.backends.postgresql_psycopg2',
 #        'USER': 'django_keyspace',
-#        'PASSWORD': 'django_keyspace'
+#        'PASSWORD': 'django_keyspace',
+#        'TEST_NAME': 'django_keyspace_test',
 #    },
 #    'mysql': {
 #        'NAME': 'django_keyspace',
 #        'ENGINE': 'django.db.backends.mysql',
 #        'USER': 'django_keyspace',
-#        'PASSWORD': 'django_keyspace'
-#    }
+#        'PASSWORD': 'django_keyspace',
+#        'TEST_NAME': 'django_keyspace_test',
+#    },
 }

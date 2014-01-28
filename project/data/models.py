@@ -35,3 +35,9 @@ class DataFields(models.Model):
     char_field = models.CharField('Char', max_length=200)
     text_field = models.CharField('Char', max_length=200)
 
+# Defined primary key
+class DataBenchmark(models.Model):
+    id = models.IntegerField('ID', primary_key=True)
+    data1 = models.CharField('Data1', max_length=256)
+    data2 = models.CharField('Data2', max_length=256)
+    data3 = models.CharField('Data3', max_length=256)
