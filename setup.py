@@ -9,7 +9,7 @@ install_requires = [
     #'djangotoolbox >= 1.6, < 1.7',
     'cql >= 1.4, < 1.5',
     'cqlsh >= 4.1.0, < 5.0.0',
-    'readline >= 6.2',  # Tab completion in cqlsh for MAC OS
+    #'readline >= 6.2',  # Tab completion in cqlsh for MAC OS
 ]
 
 
