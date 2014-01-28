@@ -46,6 +46,11 @@ def clear_tables():
                        'data_datafields'):
         cursor.execute("TRUNCATE %s" % (table_name,))
 
+def count_rows(table_name):
+    cursor = connection.cursor()
+    cursor.execute('SELECT COUNT(*) FROM %s;' % (table_name,))
+    return cursor.fetchall()[0][0]
+
 class ModelTest(TestCase):
 
     # Turn on benchmarks
@@ -214,6 +219,7 @@ class ModelTest(TestCase):
                 data_object.id = i
                 data_object.data = i + 5
                 data_object.save(force_insert=True)
+            self.assertEqual(LOOPS, count_rows('data_dataprimary'))
         benchmark(test_orm_insert, 'orm_insert', 'ORM insert', LOOPS)
 
         clear_tables()
@@ -226,6 +232,7 @@ class ModelTest(TestCase):
                 data_object.data = i + 5
                 buffer.append(data_object)
             models.DataPrimary.objects.bulk_create(buffer)
+            self.assertEqual(LOOPS, count_rows('data_dataprimary'))
         benchmark(test_orm_insert_bulk, 'orm_insert_bulk', 'ORM insert bulk', LOOPS)
 
         clear_tables()
@@ -233,6 +240,7 @@ class ModelTest(TestCase):
             cursor = connection.cursor()
             for i in range(LOOPS):
                 cursor.execute("INSERT INTO data_dataprimary (id, data) VALUES (%d,%d)" % (i, i + 5))
+            self.assertEqual(LOOPS, count_rows('data_dataprimary'))
         benchmark(test_cql_insert, 'cql_insert', 'CQL insert', LOOPS)
 
         clear_tables()
@@ -243,6 +251,7 @@ class ModelTest(TestCase):
                 buffer.append("INSERT INTO data_dataprimary (id, data) VALUES (%d,%d)" % (i, i + 5))
             buffer.append('APPLY BATCH')
             cursor.execute('  '.join(buffer))
+            self.assertEqual(LOOPS, count_rows('data_dataprimary'))
         benchmark(test_cql_insert, 'cql_insert_batch', 'CQL insert batch', LOOPS)
 
     if not (BENCHMARKS or
