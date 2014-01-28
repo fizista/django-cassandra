@@ -89,6 +89,15 @@ Model objects:
 Tests
 =====
 
+Requirements:
+* graphviz (Ubuntu/Debian: apt-get install graphviz)
+
+Install:
+
+pip install -e .[tests]
+
+
+
 Run normal tests:
 
 ./manage tests

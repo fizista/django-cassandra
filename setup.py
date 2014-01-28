@@ -19,6 +19,9 @@ tests_requires = [
     'werkzeug',
     'django-pdb',
     'pycallgraph',
+    'pycassa',
+    'ipdb',
+    'django-pdb',
 ]
 
 
