@@ -254,11 +254,11 @@ class ModelTest(TestCase):
         clear_tables()
         def test_cql_insert_batch():
             cursor = connection.cursor()
-            buffer = ['BEGIN BATCH']
+            buffer = [b'BEGIN BATCH']
             for i in range(LOOPS):
-                buffer.append("INSERT INTO data_dataprimary (id, data) VALUES (%d,%d)" % (i, i + 5))
-            buffer.append('APPLY BATCH')
-            cursor.execute('  '.join(buffer))
+                buffer.append(b"INSERT INTO data_dataprimary (id, data) VALUES (%d,%d)" % (i, i + 5))
+            buffer.append(b'APPLY BATCH')
+            cursor.execute(b'  '.join(buffer))
             self.assertEqual(LOOPS, count_rows('data_dataprimary'))
         benchmark(test_cql_insert, 'cql_insert_batch', 'CQL insert batch', LOOPS)
 
