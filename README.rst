@@ -86,5 +86,15 @@ Fields:
 Model objects:
 * change the primary key
 
+Tests
+=====
+
+Run normal tests:
+
+./manage tests
+
+Run tests with benchmarks:
+
+BENCHMARK=1 ./manage tests
 
 

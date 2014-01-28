@@ -7,6 +7,9 @@ from django.db.backends import BaseDatabaseOperations
 
 
 class DatabaseOperations(BaseDatabaseOperations):
+
+    compiler_module = "django_cassandra.db.compiler"
+
     def __init__(self, connection):
         super(DatabaseOperations, self).__init__(connection)
 

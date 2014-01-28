@@ -4,11 +4,14 @@
 # http://docs.python.org/2/library/__future__.html
 from __future__ import absolute_import, division, print_function, unicode_literals
 
-import datetime
 import cql
-import time
 import datetime
+import os
+import time
 
+from pycallgraph import PyCallGraph
+from pycallgraph.output import GraphvizOutput
+from pycallgraph import Config
 from django.test import TestCase
 from django.db import connection
 from django.db.utils import ProgrammingError
@@ -16,14 +19,65 @@ from django.db.utils import ProgrammingError
 from . import models
 
 
+def benchmark(test_method, out_file, name, loops):
+    """
+    Args:
+        test_method - 
+        out_file - filename without extension
+        name - test name
+    """
+    graphviz = GraphvizOutput()
+    graphviz.output_file = '%s.png' % (out_file,)
+    config = Config(max_depth=20)
+    start = datetime.datetime.now()
+    with PyCallGraph(output=graphviz, config=config):
+        test_method()
+    end = datetime.datetime.now()
+    time_delta = end - start
+    time_seconds = time_delta.seconds
+    loops_per_sec = loops / time_seconds
+    print("%40s %18s %s" % (name, str(time_delta), str(loops_per_sec)))
+
+def clear_tables():
+    cursor = connection.cursor()
+    for table_name in ('data_dataprimary',
+                       'data_dataprimaryauto',
+                       'data_dataindex',
+                       'data_datafields'):
+        cursor.execute("TRUNCATE %s" % (table_name,))
+
 class ModelTest(TestCase):
 
+    # Turn on benchmarks
+    BENCHMARKS = False
+
     def setUp(self):
-        cursor = connection.cursor()
-        cursor.execute("TRUNCATE data_dataprimary")
+        clear_tables()
 
     def tearDown(self):
         pass
+
+    def test_insert_autoid(self):
+
+        data_object1 = models.DataPrimaryAuto()
+        data_object1.data = 10
+        data_object1.save()
+
+        self.assertTrue(len(data_object1.pk) >= 1)
+
+        data_object2 = models.DataPrimaryAuto()
+        data_object2.data = 20
+        data_object2.save()
+
+        self.assertNotEqual(data_object1.pk, data_object2.pk)
+
+        cursor = connection.cursor()
+        cursor.execute("SELECT * FROM data_dataprimaryauto")
+        self.assertEqual(
+            cursor.fetchall(),
+            [[data_object1.pk, 10],
+             [data_object2.pk, 20]]
+        )
 
     def test_insert(self):
 
@@ -31,31 +85,42 @@ class ModelTest(TestCase):
         data_object = models.DataPrimary()
         data_object.id = 1
         data_object.data = 10
-        data_object.save()
+        data_object.save(force_insert=True)
 
-        # Save second clone object
-        # TODO: if it is possible to add the ability to change the primary key
-#        data_object = models.DataPrimary()
-#        data_object.id = 2
-#        data_object.save()
-
-        # Save third object
+        # Save second object
         data_object = models.DataPrimary()
         data_object.id = 3
         data_object.data = 30
-        data_object.save()
-
-        # Test auto ID
-        with self.assertRaises(ProgrammingError):
-            data_object.id = None
-            data_object.save()
+        data_object.save(force_insert=True)
 
         cursor = connection.cursor()
         cursor.execute("SELECT * FROM data_dataprimary")
         self.assertEqual(
             cursor.fetchall(),
             [[1, 10],
-             #[2, 10],
+             [3, 30]]
+        )
+
+    def test_insert_bulk(self):
+
+        # Create first object
+        data_object1 = models.DataPrimary()
+        data_object1.id = 1
+        data_object1.data = 10
+
+        # Create second object
+        data_object2 = models.DataPrimary()
+        data_object2.id = 3
+        data_object2.data = 30
+
+        # Save objects
+        models.DataPrimary.objects.bulk_create([data_object1, data_object2])
+
+        cursor = connection.cursor()
+        cursor.execute("SELECT * FROM data_dataprimary")
+        self.assertEqual(
+            cursor.fetchall(),
+            [[1, 10],
              [3, 30]]
         )
 
@@ -137,45 +202,49 @@ class ModelTest(TestCase):
             datafields_object_db.text_field,
             'abcdABCD')
 
-    def test_bench_orm(self):
-        start = datetime.datetime.now()
+    def test_benchmark(self):
 
-        def test_orm():
-            for i in range(10000):
+        LOOPS = 10000
+
+        clear_tables()
+        def test_orm_insert():
+            for i in range(LOOPS):
                 # Save first object
                 data_object = models.DataPrimary()
                 data_object.id = i
                 data_object.data = i + 5
-                data_object.save()
+                data_object.save(force_insert=True)
+        benchmark(test_orm_insert, 'orm_insert', 'ORM insert', LOOPS)
 
-        from pycallgraph import PyCallGraph
-        from pycallgraph.output import GraphvizOutput
-        from pycallgraph import Config
-        graphviz = GraphvizOutput()
-        graphviz.output_file = 'p_orm.png'
-        config = Config(max_depth=20)
-        with PyCallGraph(output=graphviz, config=config):
-            test_orm()
+        clear_tables()
+        def test_orm_insert_bulk():
+            buffer = []
+            for i in range(LOOPS):
+                # Save first object
+                data_object = models.DataPrimary()
+                data_object.id = i
+                data_object.data = i + 5
+                buffer.append(data_object)
+            models.DataPrimary.objects.bulk_create(buffer)
+        benchmark(test_orm_insert_bulk, 'orm_insert_bulk', 'ORM insert bulk', LOOPS)
 
-        end = datetime.datetime.now()
-        print("ORM %s" % str(end - start))
-
-    def test_bench_cql(self):
-        cursor = connection.cursor()
-        start = datetime.datetime.now()
-
-        def test_orm():
-            for i in range(10000):
+        clear_tables()
+        def test_cql_insert():
+            cursor = connection.cursor()
+            for i in range(LOOPS):
                 cursor.execute("INSERT INTO data_dataprimary (id, data) VALUES (%d,%d)" % (i, i + 5))
+        benchmark(test_cql_insert, 'cql_insert', 'CQL insert', LOOPS)
 
-        from pycallgraph import PyCallGraph
-        from pycallgraph.output import GraphvizOutput
-        from pycallgraph import Config
-        graphviz = GraphvizOutput()
-        graphviz.output_file = 'p_cql.png'
-        config = Config(max_depth=20)
-        with PyCallGraph(output=graphviz, config=config):
-            test_orm()
+        clear_tables()
+        def test_cql_insert_batch():
+            cursor = connection.cursor()
+            buffer = ['BEGIN BATCH']
+            for i in range(LOOPS):
+                buffer.append("INSERT INTO data_dataprimary (id, data) VALUES (%d,%d)" % (i, i + 5))
+            buffer.append('APPLY BATCH')
+            cursor.execute('  '.join(buffer))
+        benchmark(test_cql_insert, 'cql_insert_batch', 'CQL insert batch', LOOPS)
 
-        end = datetime.datetime.now()
-        print("CQL %s" % str(end - start))
+    if not (BENCHMARKS or
+            'BENCHMARK' in os.environ and int(os.environ['BENCHMARK'])):
+        test_benchmark = None

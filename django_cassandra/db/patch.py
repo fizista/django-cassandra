@@ -68,23 +68,23 @@ def execute_decorator(f):
         # #############################
         # The patches for SQL queries
         # #############################
-        if params:
-            # correct parameters "%s" => :d<x>, where x = 1,2,3,...
-            param_counter = Counter(lambda c, m: ":d%s " % (c,))
-            cql_query = re_param.sub(param_counter, cql_query)
-            params = dict([('d%s' % (k), v) for k, v in enumerate(params, 1)])
+#        if params:
+#            # correct parameters "%s" => :d<x>, where x = 1,2,3,...
+#            param_counter = Counter(lambda c, m: ":d%s " % (c,))
+#            cql_query = re_param.sub(param_counter, cql_query)
+#            params = dict([('d%s' % (k), v) for k, v in enumerate(params, 1)])
 
-        # remove the name of the table from parameters
-        cql_query = re_param_table_name.sub(lambda m: m.groups()[1], cql_query)
-
-        # remove "OFFSET <offset_number>", add LIMIT <limit_number>+<offset_number>
-        if 'OFFSET' in cql_query:
-            offset = int(re_offset.findall(cql_query)[0])
-            limit = int(re_limit.findall(cql_query)[0])
-            # remove offset
-            cql_query = re_offset.sub('', cql_query)
-            # change limit
-            cql_query = re_limit.sub('LIMIT %d' % (offset + limit,), cql_query)
+#        # remove the name of the table from parameters
+#        cql_query = re_param_table_name.sub(lambda m: m.groups()[1], cql_query)
+#
+#        # remove "OFFSET <offset_number>", add LIMIT <limit_number>+<offset_number>
+#        if 'OFFSET' in cql_query:
+#            offset = int(re_offset.findall(cql_query)[0])
+#            limit = int(re_limit.findall(cql_query)[0])
+#            # remove offset
+#            cql_query = re_offset.sub('', cql_query)
+#            # change limit
+#            cql_query = re_limit.sub('LIMIT %d' % (offset + limit,), cql_query)
 
         # The patch converts unicode to ascii.
         # Django unfortunately working on unicode
@@ -112,7 +112,7 @@ def prepare_inline_decorator(f):
 
 class ThriftCursor(ThriftCursorPrimitive):
     execute = execute_decorator(ThriftCursorPrimitive.execute)
-    prepare_inline = prepare_inline_decorator(ThriftCursorPrimitive.prepare_inline)
+    #prepare_inline = prepare_inline_decorator(ThriftCursorPrimitive.prepare_inline)
 
 
 class ThriftConnection(ThriftConnectionPrimitive):
@@ -121,7 +121,7 @@ class ThriftConnection(ThriftConnectionPrimitive):
 
 class NativeCursor(NativeCursorPrimitive):
     execute = execute_decorator(NativeCursorPrimitive.execute)
-    prepare_inline = prepare_inline_decorator(ThriftCursorPrimitive.prepare_inline)
+    #prepare_inline = prepare_inline_decorator(ThriftCursorPrimitive.prepare_inline)
 
 
 class NativeConnection(NativeConnectionPrimitive):

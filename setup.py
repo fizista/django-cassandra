@@ -18,6 +18,7 @@ tests_requires = [
     'django-extensions',
     'werkzeug',
     'django-pdb',
+    'pycallgraph',
 ]
 
 
