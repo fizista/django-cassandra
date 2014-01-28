@@ -12,6 +12,12 @@ import time
 from pycallgraph import PyCallGraph
 from pycallgraph.output import GraphvizOutput
 from pycallgraph import Config
+try:
+    from pycassa.pool import ConnectionPool
+    from pycassa.columnfamily import ColumnFamily
+    PYCASSA_TESTS = True
+except ImportError:
+    PYCASSA_TESTS = False
 from django.test import TestCase
 from django.db import connection
 from django.db.utils import ProgrammingError
@@ -38,12 +44,14 @@ def benchmark(test_method, out_file, name, loops):
     loops_per_sec = loops / time_seconds
     print("%40s %18s %s" % (name, str(time_delta), str(loops_per_sec)))
 
-def clear_tables():
+def clear_tables(tables=None):
+    if not None:
+        tables = []
     cursor = connection.cursor()
-    for table_name in ('data_dataprimary',
+    for table_name in ['data_dataprimary',
                        'data_dataprimaryauto',
                        'data_dataindex',
-                       'data_datafields'):
+                       'data_datafields'] + tables:
         cursor.execute("TRUNCATE %s" % (table_name,))
 
 def count_rows(table_name):
@@ -253,6 +261,44 @@ class ModelTest(TestCase):
             cursor.execute('  '.join(buffer))
             self.assertEqual(LOOPS, count_rows('data_dataprimary'))
         benchmark(test_cql_insert, 'cql_insert_batch', 'CQL insert batch', LOOPS)
+
+        if PYCASSA_TESTS:
+            clear_tables()
+            from pycassa.system_manager import SystemManager
+            from pycassa.system_manager import INT_TYPE
+            cursor = connection.cursor()
+            ip = cursor.db.get_connection_params()[0][0]
+            port = cursor.db.get_connection_params()[1]['port']
+            keyspace = cursor.db.get_connection_params()[1]['keyspace']
+            if not port:
+                port = 9160
+            ip_link = '%s:%d' % (ip, port)
+            sys = SystemManager(ip_link)
+            table_name = 'pycassa_dataprimary'
+            sys.create_column_family(
+                 keyspace,
+                 table_name,
+                 key_validation_class=INT_TYPE,
+                 default_validation_class=INT_TYPE)
+            def test_pycassa_insert():
+                pool = ConnectionPool(keyspace, [ip_link])
+                col_dataprimary = ColumnFamily(pool, table_name)
+                for i in range(LOOPS):
+                    col_dataprimary.insert(i, {'data': i + 5})
+                self.assertEqual(LOOPS, count_rows(table_name))
+            benchmark(test_pycassa_insert, 'pycassa_insert', 'Pycassa insert', LOOPS)
+
+
+            clear_tables([table_name])
+            def test_pycassa_insert_batch():
+                pool = ConnectionPool(keyspace, [ip_link])
+                col_dataprimary = ColumnFamily(pool, table_name)
+                with col_dataprimary.batch() as b:
+                    for i in range(LOOPS):
+                        b.insert(i, {'data': i + 5})
+                self.assertEqual(LOOPS, count_rows(table_name))
+            benchmark(test_pycassa_insert_batch, 'pycassa_insert_batch', 'Pycassa insert batch', LOOPS)
+
 
     if not (BENCHMARKS or
             'BENCHMARK' in os.environ and int(os.environ['BENCHMARK'])):
