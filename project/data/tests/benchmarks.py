@@ -4,6 +4,7 @@
 from __future__ import absolute_import, division, print_function, unicode_literals
 
 import cql
+import cProfile
 import datetime
 import math
 import os
@@ -12,6 +13,7 @@ import time
 from django.test import TestCase
 from django.db import connection
 from django.db.utils import ProgrammingError
+from guppy import hpy
 from pycallgraph import PyCallGraph
 from pycallgraph.output import GraphvizOutput
 from pycallgraph import Config
@@ -19,6 +21,7 @@ from pycassa.pool import ConnectionPool
 from pycassa.columnfamily import ColumnFamily
 from pycassa.system_manager import SystemManager
 from pycassa.system_manager import INT_TYPE
+from pyprof2calltree import convert
 
 from .. import models
 from .utils import clear_tables, count_rows
@@ -32,7 +35,7 @@ def round_sig(x, sig=3):
     return round(x, sig - int(math.floor(math.log10(abs(x)))) - 1)
 
 
-def benchmark_profile(test_method, calls=1, test_method_args=None):
+def benchmark_profile_pycallgraph(test_method, calls=1, test_method_args=None):
     """
     pycallgraph
     
@@ -95,6 +98,87 @@ def benchmark_simple_time(test_method, calls=1, test_method_args=None):
         fh.write(out_txt_file + '\n')
     print("%40s %s" % (test_method.__name__, out_info,))
     return out
+
+
+def benchmark_cprofile(test_method, calls=1, test_method_args=None):
+    """
+    cprofile
+    
+    Args:
+        test_method - 
+        calls - number of internal calls the block action
+        
+    Return:
+        out_data =  test_method()
+    """
+    id_test = 'bench_cprofile_' + test_method.__name__
+    if not test_method_args:
+        test_method_args = []
+    profile = cProfile.Profile()
+
+    start = datetime.datetime.now()
+    out = profile.runcall(test_method, *test_method_args)
+    end = datetime.datetime.now()
+
+    time_delta = end - start
+    time_seconds = round_sig(time_delta.total_seconds())
+    loops_per_sec = round_sig(calls / time_seconds)
+    out_info = "%9.3f %6.0f" % (time_seconds, loops_per_sec)
+    out_txt_file = os.path.join(
+        DATA_RESULTS_BENCHMARK_DIR,
+        '%s.txt' % (id_test,))
+    with open(out_txt_file, 'w') as fh:
+        fh.write(out_txt_file + '\n')
+    out_txt_file_profile = os.path.join(
+        DATA_RESULTS_BENCHMARK_DIR,
+        '%s.profile' % (id_test,))
+    profile.dump_stats(out_txt_file_profile)
+    out_txt_file_kgrind = os.path.join(
+        DATA_RESULTS_BENCHMARK_DIR,
+        '%s.kgrind' % (id_test,))
+    convert(out_txt_file_profile, out_txt_file_kgrind)
+    print("%40s %s" % (test_method.__name__, out_info,))
+    return out
+
+def benchmark_heapy(test_method, calls=1, test_method_args=None):
+    """
+    heapy - memory objects
+    
+    Args:
+        test_method - 
+        calls - number of internal calls the block action
+        
+    Return:
+        out_data =  test_method()
+    """
+    id_test = 'bench_heapy_' + test_method.__name__
+    if not test_method_args:
+        test_method_args = []
+
+    start = datetime.datetime.now()
+    h = hpy()
+    h.setref()
+    out = test_method(*test_method_args)
+    out_data = str(h.heap())
+    end = datetime.datetime.now()
+
+    time_delta = end - start
+    time_seconds = round_sig(time_delta.total_seconds())
+    loops_per_sec = round_sig(calls / time_seconds)
+    out_info = "%9.3f %6.0f" % (time_seconds, loops_per_sec)
+    out_txt_file = os.path.join(
+        DATA_RESULTS_BENCHMARK_DIR,
+        '%s.txt' % (id_test,))
+    with open(out_txt_file, 'w') as fh:
+        fh.write(out_txt_file + '\n')
+    out_txt_file_mem = os.path.join(
+        DATA_RESULTS_BENCHMARK_DIR,
+        '%s.memorystat' % (id_test,))
+    with open(out_txt_file_mem, 'w') as fh:
+        fh.write(out_data)
+    print("%40s %s" % (test_method.__name__, out_info,))
+    return out
+
 
 class BenchmarkTest(TestCase):
 
@@ -202,13 +286,21 @@ class BenchmarkTest(TestCase):
             return insert_number
 
         inserts_simple = get_inserts_base()
-        inserts_profile = benchmark_profile(get_inserts_base, 999999999)
+        inserts_profile_pycallgraph = benchmark_profile_pycallgraph(get_inserts_base, 999999999)
+        inserts_cprofile = benchmark_cprofile(get_inserts_base, 999999999)
+        inserts_heapy = benchmark_heapy(get_inserts_base, 999999999)
 
         print('Benchmark simple')
         self.run_benchmark_comparison(benchmark_simple_time, inserts_simple)
 
-        print('Benchmark profile')
-        self.run_benchmark_comparison(benchmark_profile, inserts_profile)
+        print('Benchmark pycallgraph')
+        self.run_benchmark_comparison(benchmark_profile_pycallgraph, inserts_profile_pycallgraph)
+
+        print('Benchmark cProfile')
+        self.run_benchmark_comparison(benchmark_cprofile, inserts_cprofile)
+
+        print('Benchmark heapy')
+        self.run_benchmark_comparison(benchmark_heapy, inserts_heapy)
 
     def run_benchmark_comparison(self, benchmark, inserts):
 
@@ -216,7 +308,7 @@ class BenchmarkTest(TestCase):
         print('Insert: %d' % INSERTS)
 
         clear_tables('data_dataprimary')
-        def test_orm_create_objects_speed():
+        def object_create_speed_orm():
             insert_number = 0
             start = datetime.datetime.now()
             while 1:
@@ -226,10 +318,10 @@ class BenchmarkTest(TestCase):
                 data_object.data = insert_number
                 if not insert_number % INSERTS:
                     break
-        benchmark(test_orm_create_objects_speed, INSERTS)
+        benchmark(object_create_speed_orm, INSERTS)
 
         clear_tables('data_dataprimary')
-        def test_orm_insert():
+        def insert_orm():
             insert_number = 0
             while 1:
                 insert_number += 1
@@ -239,11 +331,11 @@ class BenchmarkTest(TestCase):
                 data_object.save(force_insert=True)
                 if not insert_number % INSERTS:
                     break
-        benchmark(test_orm_insert, INSERTS)
+        benchmark(insert_orm, INSERTS)
         self.assertEqual(INSERTS, count_rows('data_dataprimary'))
 
         clear_tables('data_dataprimary')
-        def test_orm_insert_bulk():
+        def insert_bulk_orm():
             buffer = []
             insert_number = 0
             while 1:
@@ -256,23 +348,11 @@ class BenchmarkTest(TestCase):
                 if not insert_number % INSERTS:
                     break
             models.DataPrimary.objects.bulk_create(buffer)
-        benchmark(test_orm_insert_bulk, INSERTS)
+        benchmark(insert_bulk_orm, INSERTS)
         self.assertEqual(INSERTS, count_rows('data_dataprimary'))
 
         clear_tables('data_dataprimary')
-        def test_orm_insert_bulk_for():
-            buffer = []
-            for insert_number in range(INSERTS):
-                data_object = models.DataPrimary()
-                data_object.id = insert_number
-                data_object.data = insert_number
-                buffer.append(data_object)
-            models.DataPrimary.objects.bulk_create(buffer)
-        benchmark(test_orm_insert_bulk_for, INSERTS)
-        self.assertEqual(INSERTS, count_rows('data_dataprimary'))
-
-        clear_tables('data_dataprimary')
-        def test_cql_insert():
+        def insert_cql():
             cursor = connection.cursor()
             insert_number = 0
             while 1:
@@ -280,11 +360,11 @@ class BenchmarkTest(TestCase):
                 cursor.execute("INSERT INTO data_dataprimary (id, data) VALUES (%d,%d)" % (insert_number, insert_number))
                 if not insert_number % INSERTS:
                     break
-        benchmark(test_cql_insert, INSERTS)
+        benchmark(insert_cql, INSERTS)
         self.assertEqual(INSERTS, count_rows('data_dataprimary'))
 
         clear_tables('data_dataprimary')
-        def test_cql_insert_batch():
+        def insert_batch_cql():
             cursor = connection.cursor()
             buffer = [b'BEGIN BATCH']
             insert_number = 0
@@ -295,7 +375,7 @@ class BenchmarkTest(TestCase):
                     break
             buffer.append(b'APPLY BATCH')
             cursor.execute(b'  '.join(buffer))
-        benchmark(test_cql_insert_batch, INSERTS)
+        benchmark(insert_batch_cql, INSERTS)
         self.assertEqual(INSERTS, count_rows('data_dataprimary'))
 
         clear_tables('pycassa_dataprimary')
@@ -316,7 +396,7 @@ class BenchmarkTest(TestCase):
                  default_validation_class=INT_TYPE)
         except:
             pass
-        def test_pycassa_insert():
+        def insert_pycassa():
             pool = ConnectionPool(keyspace, [ip_link])
             col_dataprimary = ColumnFamily(pool, table_name)
             insert_number = 0
@@ -325,12 +405,11 @@ class BenchmarkTest(TestCase):
                 col_dataprimary.insert(insert_number, {'data': insert_number})
                 if not insert_number % INSERTS:
                     break
-        benchmark(test_pycassa_insert, INSERTS)
+        benchmark(insert_pycassa, INSERTS)
         self.assertEqual(INSERTS, count_rows(table_name))
 
-
         clear_tables('pycassa_dataprimary')
-        def test_pycassa_insert_batch():
+        def insert_batch_pycassa():
             pool = ConnectionPool(keyspace, [ip_link])
             col_dataprimary = ColumnFamily(pool, table_name)
             with col_dataprimary.batch() as b:
@@ -340,5 +419,5 @@ class BenchmarkTest(TestCase):
                     b.insert(insert_number, {'data': insert_number})
                     if not insert_number % INSERTS:
                         break
-        benchmark(test_pycassa_insert_batch, INSERTS)
+        benchmark(insert_batch_pycassa, INSERTS)
         self.assertEqual(INSERTS, count_rows(table_name))

@@ -22,6 +22,8 @@ tests_requires = [
     'pycassa',
     'ipdb',
     'django-pdb',
+    'pyprof2calltree',
+    'guppy',
 ]
 
 
