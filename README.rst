@@ -65,7 +65,9 @@ In the settings django:
            #'TRANSPORT': '',
        }
    }
-   
+
+
+
 What works
 ==========
 
@@ -96,14 +98,17 @@ Install:
 
 pip install -e .[tests]
 
-
-
 Run normal tests:
 
 ./manage tests
 
-Run tests with benchmarks:
+Run benchmarks:
 
-BENCHMARK=1 ./manage tests
+   BENCHMARK=1 ./manage.py test project.data.tests.BenchmarkTest.test_benchmark_stress_cassandra
 
+To stop benchmark, you need to terminate the program.
+Return: benchmark_stress_cassandra.txt
 
+   BENCHMARK=1 ./manage.py test project.data.tests.BenchmarkTest.test_benchmark_comparison
+
+Return: benchmark_comparison.txt
