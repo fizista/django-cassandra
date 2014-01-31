@@ -1,0 +1,3 @@
+[submodule "external_libraries/gprof2dot"]
+	path = external_libraries/gprof2dot
+	url = https://code.google.com/p/jrfonseca.gprof2dot/

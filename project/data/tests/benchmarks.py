@@ -9,12 +9,14 @@ import datetime
 import math
 import os
 import time
+import sh
 
 from django.test import TestCase
 from django.db import connection
 from django.db.utils import ProgrammingError
 from guppy import hpy
 from pycallgraph import PyCallGraph
+from pycallgraph import GlobbingFilter
 from pycallgraph.output import GraphvizOutput
 from pycallgraph import Config
 from pycassa.pool import ConnectionPool
@@ -30,6 +32,8 @@ from ..settings import DATA_RESULTS_BENCHMARK_DIR
 # !!!!!!!!!!!!!!!!!
 #TODO: batch_create using MISSING
 
+__dir__ = os.path.dirname(__file__)
+
 
 def round_sig(x, sig=3):
     return round(x, sig - int(math.floor(math.log10(abs(x)))) - 1)
@@ -44,8 +48,12 @@ def benchmark_profile_pycallgraph(test_method, calls=1, test_method_args=None):
         calls - number of internal calls the block action
     Return:
         out_data =  test_method()
+        
+    Creates such files:
+        <DATA_RESULTS_BENCHMARK_DIR>/<id_test>.txt - delta time
+        <DATA_RESULTS_BENCHMARK_DIR>/<id_test>.png - pycallgraph
     """
-    id_test = 'bench_profile_' + test_method.__name__
+    id_test = 'bench_pycallgraph_' + test_method.__name__
     if not test_method_args:
         test_method_args = []
     graphviz = GraphvizOutput()
@@ -53,6 +61,12 @@ def benchmark_profile_pycallgraph(test_method, calls=1, test_method_args=None):
         DATA_RESULTS_BENCHMARK_DIR,
         '%s.png' % (id_test,))
     config = Config(max_depth=20)
+    config.trace_filter = GlobbingFilter(include=[
+        'django.*',
+        'cql.*',
+        'project.*',
+        'django_cassandra.*'
+    ])
     start = datetime.datetime.now()
     with PyCallGraph(output=graphviz, config=config):
         out = test_method(*test_method_args)
@@ -65,7 +79,7 @@ def benchmark_profile_pycallgraph(test_method, calls=1, test_method_args=None):
         DATA_RESULTS_BENCHMARK_DIR,
         '%s.txt' % (id_test,))
     with open(out_txt_file, 'w') as fh:
-        fh.write(out_txt_file + '\n')
+        fh.write(out_info + '\n')
     print("%40s %s" % (test_method.__name__, out_info,))
     return out
 
@@ -80,6 +94,9 @@ def benchmark_simple_time(test_method, calls=1, test_method_args=None):
         
     Return:
         out_data =  test_method()
+        
+    Creates such files:
+        <DATA_RESULTS_BENCHMARK_DIR>/<id_test>.txt - delta time
     """
     id_test = 'bench_simple_' + test_method.__name__
     if not test_method_args:
@@ -95,7 +112,7 @@ def benchmark_simple_time(test_method, calls=1, test_method_args=None):
         DATA_RESULTS_BENCHMARK_DIR,
         '%s.txt' % (id_test,))
     with open(out_txt_file, 'w') as fh:
-        fh.write(out_txt_file + '\n')
+        fh.write(out_info + '\n')
     print("%40s %s" % (test_method.__name__, out_info,))
     return out
 
@@ -110,6 +127,12 @@ def benchmark_cprofile(test_method, calls=1, test_method_args=None):
         
     Return:
         out_data =  test_method()
+        
+    Creates such files:
+        <DATA_RESULTS_BENCHMARK_DIR>/<id_test>.txt - delta time
+        <DATA_RESULTS_BENCHMARK_DIR>/<id_test>.profile - cProfile out
+        <DATA_RESULTS_BENCHMARK_DIR>/<id_test>.kgrind - KCacheGrind
+        <DATA_RESULTS_BENCHMARK_DIR>/<id_test>.png - Gprof2Dot
     """
     id_test = 'bench_cprofile_' + test_method.__name__
     if not test_method_args:
@@ -124,21 +147,39 @@ def benchmark_cprofile(test_method, calls=1, test_method_args=None):
     time_seconds = round_sig(time_delta.total_seconds())
     loops_per_sec = round_sig(calls / time_seconds)
     out_info = "%9.3f %6.0f" % (time_seconds, loops_per_sec)
+    # Simple test
     out_txt_file = os.path.join(
         DATA_RESULTS_BENCHMARK_DIR,
         '%s.txt' % (id_test,))
     with open(out_txt_file, 'w') as fh:
-        fh.write(out_txt_file + '\n')
+        fh.write(out_info + '\n')
+    # cProfile out
     out_txt_file_profile = os.path.join(
         DATA_RESULTS_BENCHMARK_DIR,
         '%s.profile' % (id_test,))
     profile.dump_stats(out_txt_file_profile)
+    # KGrid
     out_txt_file_kgrind = os.path.join(
         DATA_RESULTS_BENCHMARK_DIR,
         '%s.kgrind' % (id_test,))
     convert(out_txt_file_profile, out_txt_file_kgrind)
+    # Gprof2Dot
+    out_txt_file_gprof = os.path.join(
+        DATA_RESULTS_BENCHMARK_DIR,
+        '%s.png' % (id_test,))
+    gprof2dot_exe = os.path.join(
+        __dir__, '..', '..', '..',
+        'external_libraries',
+        'gprof2dot', 'gprof2dot.py')
+    gprof2dot = sh.Command(gprof2dot_exe)
+    sh.dot(
+        gprof2dot('-f', 'pstats', out_txt_file_profile),
+        '-Tpng',
+        '-o',
+        out_txt_file_gprof)
     print("%40s %s" % (test_method.__name__, out_info,))
     return out
+
 
 def benchmark_heapy(test_method, calls=1, test_method_args=None):
     """
@@ -150,6 +191,10 @@ def benchmark_heapy(test_method, calls=1, test_method_args=None):
         
     Return:
         out_data =  test_method()
+        
+    Creates such files:
+        <DATA_RESULTS_BENCHMARK_DIR>/<id_test>.txt - delta time
+        <DATA_RESULTS_BENCHMARK_DIR>/<id_test>.png - heapy memory stats
     """
     id_test = 'bench_heapy_' + test_method.__name__
     if not test_method_args:
@@ -170,7 +215,7 @@ def benchmark_heapy(test_method, calls=1, test_method_args=None):
         DATA_RESULTS_BENCHMARK_DIR,
         '%s.txt' % (id_test,))
     with open(out_txt_file, 'w') as fh:
-        fh.write(out_txt_file + '\n')
+        fh.write(out_info + '\n')
     out_txt_file_mem = os.path.join(
         DATA_RESULTS_BENCHMARK_DIR,
         '%s.memorystat' % (id_test,))
