@@ -2,15 +2,17 @@
 django_cassandra - Cassandra database backend for Django framework.
 ===================================================================
 
-
 Installation and Configuration
 ==============================
 
-Recommended installation:
+Recommended installation::
 
-   pip install django_celery
+   git clone http://
+   pip install xxx
    
 In the settings django:
+
+.. code:: python
 
    INSTALLED_APPS += ['django_celery',]
    
@@ -67,48 +69,56 @@ In the settings django:
    }
 
 
-
 What works
 ==========
 
 Model fields:
-* CharField
-* IntegerField
+- CharField
+- IntegerField
 
 Options for the fields:
-* db_index
-* primary_key
+- db_index
+- primary_key
 
 What does not work
 ==================
 
 Fields:
-* AutoField
+- AutoField
 
 Model objects:
-* change the primary key
+- change the primary key
 
 Tests
 =====
 
+Clone repository::
+
+   git clone http://
+   git submodule init
+   git submodule update
+
 Requirements:
-* graphviz (Ubuntu/Debian: apt-get install graphviz)
+- graphviz (Ubuntu/Debian: apt-get install graphviz)
 
-Install:
 
-pip install -e .[tests]
 
-Run normal tests:
+Install::
 
-./manage tests
+   pip install -e .[tests]
 
-Run benchmarks:
+Run normal tests::
+
+   ./manage tests
+
+Run benchmarks::
 
    BENCHMARK=1 ./manage.py test project.data.tests.BenchmarkTest.test_benchmark_stress_cassandra
 
 To stop benchmark, you need to terminate the program.
-Return: benchmark_stress_cassandra.txt
+**Return**: <DATA_RESULTS_BENCHMARK_DIR>/benchmark_stress_cassandra.txt
 
+::
    BENCHMARK=1 ./manage.py test project.data.tests.BenchmarkTest.test_benchmark_comparison
 
-Return: benchmark_comparison.txt
+**Return**: <DATA_RESULTS_BENCHMARK_DIR>/*

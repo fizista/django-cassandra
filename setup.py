@@ -24,6 +24,7 @@ tests_requires = [
     'django-pdb',
     'pyprof2calltree',
     'guppy',
+    'sh',
 ]
 
 
