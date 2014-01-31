@@ -74,15 +74,15 @@ What works
 
 Model fields:
 
-   - CharField
+- CharField
 
-   - IntegerField
+- IntegerField
 
 Options for the fields:
 
-   - db_index
+- db_index
    
-   - primary_key
+- primary_key
 
 What does not work
 ==================
@@ -93,7 +93,7 @@ Fields:
 
 Model objects:
 
-   - change the primary key
+- change the primary key
 
 Tests
 =====
@@ -106,7 +106,7 @@ Clone repository::
 
 Requirements:
 
-   - graphviz (Ubuntu/Debian: apt-get install graphviz)
+- graphviz (Ubuntu/Debian: apt-get install graphviz)
 
 
 
@@ -123,6 +123,7 @@ Run benchmarks::
    BENCHMARK=1 ./manage.py test project.data.tests.BenchmarkTest.test_benchmark_stress_cassandra
 
 To stop benchmark, you need to terminate the program.
+
 **Return**: <DATA_RESULTS_BENCHMARK_DIR>/benchmark_stress_cassandra.txt
 
 ::
