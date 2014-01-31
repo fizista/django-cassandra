@@ -1,6 +1,6 @@
-===================================================================
-django_cassandra - Cassandra database backend for Django framework.
-===================================================================
+================================================
+Cassandra database backend for Django framework.
+================================================
 
 Installation and Configuration
 ==============================
@@ -73,21 +73,27 @@ What works
 ==========
 
 Model fields:
-- CharField
-- IntegerField
+
+   - CharField
+
+   - IntegerField
 
 Options for the fields:
-- db_index
-- primary_key
+
+   - db_index
+   
+   - primary_key
 
 What does not work
 ==================
 
 Fields:
-- AutoField
+
+   - AutoField
 
 Model objects:
-- change the primary key
+
+   - change the primary key
 
 Tests
 =====
@@ -99,7 +105,8 @@ Clone repository::
    git submodule update
 
 Requirements:
-- graphviz (Ubuntu/Debian: apt-get install graphviz)
+
+   - graphviz (Ubuntu/Debian: apt-get install graphviz)
 
 
 
@@ -119,6 +126,7 @@ To stop benchmark, you need to terminate the program.
 **Return**: <DATA_RESULTS_BENCHMARK_DIR>/benchmark_stress_cassandra.txt
 
 ::
+
    BENCHMARK=1 ./manage.py test project.data.tests.BenchmarkTest.test_benchmark_comparison
 
 **Return**: <DATA_RESULTS_BENCHMARK_DIR>/*
