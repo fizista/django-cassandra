@@ -30,23 +30,22 @@ class SQLInsertCompiler(compiler.SQLInsertCompiler, SQLCompiler):
         fields = self.query.fields if has_fields else [opts.pk]
 
         insert_template = 'INSERT INTO %s ' % opts.db_table
-        insert_template += '(%s)' % ', '.join([f.column for f in fields])
+        insert_template += '(%s)' % ', '.join((f.column for f in fields))
 
         if has_fields:
-            params = values = [
-                [
+            values = (
+                (
                     f.get_db_prep_save(
                         getattr(obj, f.attname)
                             if self.query.raw else f.pre_save(obj, True),
                         connection=self.connection)
                     for f in fields
-                ]
+                )
                 for obj in self.query.objs
-            ]
+            )
         else:
-            values = [[self.connection.ops.pk_default_value()] for obj in self.query.objs]
-            params = [[]]
-            fields = [None]
+            values = (tuple(self.connection.ops.pk_default_value()) for obj in self.query.objs)
+            fields = (None,)
 
         can_bulk = (not any(hasattr(field, "get_placeholder") for field in fields) and
             not self.return_id and self.connection.features.has_bulk_insert)
@@ -54,23 +53,24 @@ class SQLInsertCompiler(compiler.SQLInsertCompiler, SQLCompiler):
         # ###
         # [ [:d<number> or <value>, :d<number> or <value>, ...], ...]
         # ###
-        placeholders = [
-            [self.placeholder(num, data[0], data[1]) for num, data in enumerate(zip(fields, val))]
+        placeholders = (
+            (self.placeholder(num, data[0], data[1])
+             for num, data in enumerate(zip(fields, val)))
             for val in values
-        ]
+        )
 
-        # conversion to a dictionary required by the CQL
-        params = [dict([('d%d' % n, v) for n, v in enumerate(vals)]) for vals in params]
-
-        return_inserts = [
-            " ".join([insert_template] + ["VALUES (%s)" % ", ".join(vals)] + [';'])
+        return_inserts = (
+            " ".join(
+                (insert_template,) +
+                ("VALUES (%s)" % ", ".join(vals),) +
+                (';',))
             for vals in placeholders
-        ]
+        )
 
-        if can_bulk and len(params) > 1:
-            return_list = ['BEGIN BATCH']
-            return_list += return_inserts
-            return_list += ['APPLY BATCH']
+        if can_bulk:
+            return_list = ('BEGIN BATCH',)
+            return_list += tuple(return_inserts)
+            return_list += ('APPLY BATCH',)
             return '  '.join(return_list)
         else:
             return '  '.join(return_inserts)
@@ -87,9 +87,6 @@ class SQLInsertCompiler(compiler.SQLInsertCompiler, SQLCompiler):
             return self.connection.ops.fetch_returned_insert_id(cursor)
         return self.connection.ops.last_insert_id(cursor,
                 self.query.get_meta().db_table, self.query.get_meta().pk.column)
-
-
-
 
 
 class SQLDeleteCompiler(compiler.SQLDeleteCompiler, SQLCompiler):
