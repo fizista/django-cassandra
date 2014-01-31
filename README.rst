@@ -72,9 +72,19 @@ In the settings django:
 What works
 ==========
 
+Django manage.py subcommands:
+
+- syncdb
+
+- dbshell
+
+- sqlall
+
 Model fields:
 
 - CharField
+
+- TextField
 
 - IntegerField
 
@@ -93,7 +103,7 @@ Fields:
 
 Model objects:
 
-- change the primary key
+- change the primary key in object
 
 Tests
 =====
@@ -116,7 +126,7 @@ Install::
 
 Run normal tests::
 
-   ./manage tests
+   ./manage tests project.data
 
 Run benchmarks::
 
