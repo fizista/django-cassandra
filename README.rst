@@ -14,7 +14,7 @@ In the settings django:
 
 .. code:: python
 
-   INSTALLED_APPS += ['django_celery',]
+   INSTALLED_APPS += ['django_cassandra',]
    
    DATABASES = {
        'default': {
@@ -87,6 +87,12 @@ Model fields:
 - TextField
 
 - IntegerField
+
+- DateField
+
+- DateTimeField
+
+- TimeField
 
 Options for the fields:
 

@@ -1,0 +1,68 @@
+events: Ticks
+summary: 346
+fn=<iter>
+0 7
+
+fn=<method 'get' of 'dictproxy' objects>
+0 21
+
+fn=<setattr>
+0 16
+
+fn=<isinstance>
+0 18
+
+fn=object_create_speed_orm /home/wojciech/AptanaWorkspace/django_cassandra/project/data/tests/benchmarks.py:368
+368 18
+cfn=__init__ /home/wojciech/.pyenv/versions/cassandra/lib/python2.7/site-packages/django/db/models/base.py:325
+calls=8213 325
+368 328
+
+fn=has_default /home/wojciech/.pyenv/versions/cassandra/lib/python2.7/site-packages/django/db/models/fields/__init__.py:429
+429 17
+
+fn=<len>
+0 14
+
+fn=get_default /home/wojciech/.pyenv/versions/cassandra/lib/python2.7/site-packages/django/db/models/fields/__init__.py:435
+435 35
+cfn=has_default /home/wojciech/.pyenv/versions/cassandra/lib/python2.7/site-packages/django/db/models/fields/__init__.py:429
+calls=16426 429
+435 17
+
+fn=__init__ /home/wojciech/.pyenv/versions/cassandra/lib/python2.7/site-packages/django/db/models/base.py:314
+314 9
+
+fn=send /home/wojciech/.pyenv/versions/cassandra/lib/python2.7/site-packages/django/dispatch/dispatcher.py:162
+162 17
+
+fn=<method 'disable' of '_lsprof.Profiler' objects>
+0 0
+
+fn=__init__ /home/wojciech/.pyenv/versions/cassandra/lib/python2.7/site-packages/django/db/models/base.py:325
+325 169
+cfn=<iter>
+calls=8213 0
+325 7
+cfn=<method 'get' of 'dictproxy' objects>
+calls=16426 0
+325 21
+cfn=<setattr>
+calls=16426 0
+325 16
+cfn=<isinstance>
+calls=16426 0
+325 18
+cfn=<len>
+calls=16426 0
+325 14
+cfn=get_default /home/wojciech/.pyenv/versions/cassandra/lib/python2.7/site-packages/django/db/models/fields/__init__.py:435
+calls=16426 435
+325 52
+cfn=__init__ /home/wojciech/.pyenv/versions/cassandra/lib/python2.7/site-packages/django/db/models/base.py:314
+calls=8213 314
+325 9
+cfn=send /home/wojciech/.pyenv/versions/cassandra/lib/python2.7/site-packages/django/dispatch/dispatcher.py:162
+calls=16426 162
+325 17
+

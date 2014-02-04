@@ -1,0 +1,1433 @@
+events: Ticks
+summary: 12306
+fn=<time.time>
+0 40
+
+fn=_set_max_overflow /home/wojciech/.pyenv/versions/cassandra/lib/python2.7/site-packages/pycassa/pool.py:209
+209 0
+
+fn=insert_pycassa /home/wojciech/AptanaWorkspace/django_cassandra/project/data/tests/benchmarks.py:455
+455 62
+cfn=__init__ /home/wojciech/.pyenv/versions/cassandra/lib/python2.7/site-packages/pycassa/columnfamily.py:270
+calls=1 270
+455 2
+cfn=__init__ /home/wojciech/.pyenv/versions/cassandra/lib/python2.7/site-packages/pycassa/pool.py:270
+calls=1 270
+455 9
+cfn=insert /home/wojciech/.pyenv/versions/cassandra/lib/python2.7/site-packages/pycassa/columnfamily.py:988
+calls=8213 988
+455 12232
+
+fn=_set_default_validation_class /home/wojciech/.pyenv/versions/cassandra/lib/python2.7/site-packages/pycassa/columnfamily.py:179
+179 0
+cfn=packer_for /home/wojciech/.pyenv/versions/cassandra/lib/python2.7/site-packages/pycassa/marshal.py:226
+calls=1 226
+179 0
+cfn=extract_type_name /home/wojciech/.pyenv/versions/cassandra/lib/python2.7/site-packages/pycassa/marshal.py:33
+calls=1 33
+179 0
+cfn=unpacker_for /home/wojciech/.pyenv/versions/cassandra/lib/python2.7/site-packages/pycassa/marshal.py:323
+calls=1 323
+179 0
+cfn=<isinstance>
+calls=1 0
+179 0
+
+fn=_qsize /home/wojciech/.pyenv/versions/2.7.5/lib/python2.7/Queue.py:200
+200 70
+cfn=<len>
+calls=24647 0
+200 31
+
+fn=add_listener /home/wojciech/.pyenv/versions/cassandra/lib/python2.7/site-packages/pycassa/pool.py:611
+611 0
+cfn=<hasattr>
+calls=9 0
+611 0
+cfn=as_interface /home/wojciech/.pyenv/versions/cassandra/lib/python2.7/site-packages/pycassa/util.py:142
+calls=1 142
+611 0
+cfn=<method 'append' of 'list' objects>
+calls=10 0
+611 0
+
+fn=_load_validation_classes /home/wojciech/.pyenv/versions/cassandra/lib/python2.7/site-packages/pycassa/columnfamily.py:327
+327 0
+cfn=_set_default_validation_class /home/wojciech/.pyenv/versions/cassandra/lib/python2.7/site-packages/pycassa/columnfamily.py:179
+calls=1 179
+327 0
+cfn=_set_column_validators /home/wojciech/.pyenv/versions/cassandra/lib/python2.7/site-packages/pycassa/columnfamily.py:234
+calls=1 234
+327 0
+cfn=<method 'items' of 'dict' objects>
+calls=1 0
+327 0
+
+fn=<method 'split' of 'unicode' objects>
+0 0
+
+fn=_load_comparator_classes /home/wojciech/.pyenv/versions/cassandra/lib/python2.7/site-packages/pycassa/columnfamily.py:319
+319 0
+cfn=_set_column_name_class /home/wojciech/.pyenv/versions/cassandra/lib/python2.7/site-packages/pycassa/columnfamily.py:138
+calls=1 138
+319 0
+cfn=_set_super_column_name_class /home/wojciech/.pyenv/versions/cassandra/lib/python2.7/site-packages/pycassa/columnfamily.py:161
+calls=1 161
+319 0
+
+fn=release /home/wojciech/.pyenv/versions/2.7.5/lib/python2.7/threading.py:186
+186 0
+cfn=<thread.get_ident>
+calls=1 0
+186 0
+cfn=<method 'release' of 'thread.lock' objects>
+calls=1 0
+186 0
+cfn=_note /home/wojciech/.pyenv/versions/2.7.5/lib/python2.7/threading.py:63
+calls=1 63
+186 0
+
+fn=_init /home/wojciech/.pyenv/versions/2.7.5/lib/python2.7/Queue.py:197
+197 0
+
+fn=<map>
+0 95
+cfn=<lambda> /home/wojciech/.pyenv/versions/cassandra/lib/python2.7/site-packages/pycassa/columnfamily.py:508
+calls=8213 508
+0 744
+
+fn=_acquireLock /home/wojciech/.pyenv/versions/2.7.5/lib/python2.7/logging/__init__.py:210
+210 0
+cfn=acquire /home/wojciech/.pyenv/versions/2.7.5/lib/python2.7/threading.py:146
+calls=1 146
+210 0
+
+fn=__init__ /home/wojciech/.pyenv/versions/cassandra/lib/python2.7/site-packages/thrift/transport/TTransport.py:252
+252 0
+cfn=<cStringIO.StringIO>
+calls=10 0
+252 0
+
+fn=pack_bytes /home/wojciech/.pyenv/versions/cassandra/lib/python2.7/site-packages/pycassa/marshal.py:315
+315 55
+cfn=<isinstance>
+calls=16426 0
+315 35
+
+fn=get /home/wojciech/.pyenv/versions/2.7.5/lib/python2.7/Queue.py:150
+150 149
+cfn=<time.time>
+calls=8214 0
+150 18
+cfn=_qsize /home/wojciech/.pyenv/versions/2.7.5/lib/python2.7/Queue.py:200
+calls=8214 200
+150 31
+cfn=notify /home/wojciech/.pyenv/versions/2.7.5/lib/python2.7/threading.py:372
+calls=8214 372
+150 120
+cfn=_get /home/wojciech/.pyenv/versions/2.7.5/lib/python2.7/Queue.py:208
+calls=8214 208
+150 40
+cfn=<method 'acquire' of 'thread.lock' objects>
+calls=8214 0
+150 12
+cfn=<method 'release' of 'thread.lock' objects>
+calls=8214 0
+150 9
+
+fn=set_keyspace /home/wojciech/.pyenv/versions/cassandra/lib/python2.7/site-packages/pycassa/cassandra/Cassandra.py:493
+493 0
+cfn=recv_set_keyspace /home/wojciech/.pyenv/versions/cassandra/lib/python2.7/site-packages/pycassa/cassandra/Cassandra.py:509
+calls=5 509
+493 2
+cfn=send_set_keyspace /home/wojciech/.pyenv/versions/cassandra/lib/python2.7/site-packages/pycassa/cassandra/Cassandra.py:501
+calls=5 501
+493 1
+
+fn=empty /home/wojciech/.pyenv/versions/2.7.5/lib/python2.7/Queue.py:93
+93 74
+cfn=_qsize /home/wojciech/.pyenv/versions/2.7.5/lib/python2.7/Queue.py:200
+calls=8214 200
+93 34
+cfn=<method 'acquire' of 'thread.lock' objects>
+calls=8214 0
+93 13
+cfn=<method 'release' of 'thread.lock' objects>
+calls=8214 0
+93 10
+
+fn=__init__ /home/wojciech/.pyenv/versions/cassandra/lib/python2.7/site-packages/pycassa/connection.py:33
+33 0
+cfn=<method 'split' of 'unicode' objects>
+calls=5 0
+33 0
+cfn=open /home/wojciech/.pyenv/versions/cassandra/lib/python2.7/site-packages/thrift/transport/TTransport.py:260
+calls=5 260
+33 2
+cfn=__init__ /home/wojciech/.pyenv/versions/cassandra/lib/python2.7/site-packages/thrift/protocol/TBinaryProtocol.py:39
+calls=5 39
+33 0
+cfn=setTimeout /home/wojciech/.pyenv/versions/cassandra/lib/python2.7/site-packages/thrift/transport/TSocket.py:70
+calls=5 70
+33 0
+cfn=default_transport_factory /home/wojciech/.pyenv/versions/cassandra/lib/python2.7/site-packages/pycassa/connection.py:23
+calls=5 23
+33 0
+cfn=default_socket_factory /home/wojciech/.pyenv/versions/cassandra/lib/python2.7/site-packages/pycassa/connection.py:16
+calls=5 16
+33 0
+cfn=set_keyspace /home/wojciech/.pyenv/versions/cassandra/lib/python2.7/site-packages/pycassa/connection.py:59
+calls=5 59
+33 3
+cfn=<len>
+calls=5 0
+33 0
+cfn=__init__ /home/wojciech/.pyenv/versions/cassandra/lib/python2.7/site-packages/pycassa/cassandra/Cassandra.py:455
+calls=5 455
+33 0
+
+fn=<method 'rfind' of 'str' objects>
+0 0
+
+fn=_allow_retries /home/wojciech/.pyenv/versions/cassandra/lib/python2.7/site-packages/pycassa/columnfamily.py:230
+230 14
+
+fn=cstringio_buf /home/wojciech/.pyenv/versions/cassandra/lib/python2.7/site-packages/thrift/transport/TTransport.py:296
+296 12
+
+fn=_pack_key /home/wojciech/.pyenv/versions/cassandra/lib/python2.7/site-packages/pycassa/columnfamily.py:484
+484 60
+cfn=encode_int /home/wojciech/.pyenv/versions/cassandra/lib/python2.7/site-packages/pycassa/marshal.py:379
+calls=8213 379
+484 316
+
+fn=write /home/wojciech/.pyenv/versions/cassandra/lib/python2.7/site-packages/thrift/transport/TTransport.py:279
+279 143
+cfn=<method 'write' of 'cStringIO.StringO' objects>
+calls=41095 0
+279 109
+
+fn=shuffle /home/wojciech/.pyenv/versions/2.7.5/lib/python2.7/random.py:276
+276 0
+cfn=<len>
+calls=1 0
+276 0
+
+fn=batch_mutate /home/wojciech/.pyenv/versions/cassandra/lib/python2.7/site-packages/pycassa/cassandra/Cassandra.py:1049
+1049 100
+cfn=recv_batch_mutate /home/wojciech/.pyenv/versions/cassandra/lib/python2.7/site-packages/pycassa/cassandra/Cassandra.py:1072
+calls=8213 1072
+1049 5640
+cfn=send_batch_mutate /home/wojciech/.pyenv/versions/cassandra/lib/python2.7/site-packages/pycassa/cassandra/Cassandra.py:1063
+calls=8213 1063
+1049 2013
+
+fn=open /home/wojciech/.pyenv/versions/cassandra/lib/python2.7/site-packages/thrift/transport/TTransport.py:260
+260 0
+cfn=open /home/wojciech/.pyenv/versions/cassandra/lib/python2.7/site-packages/thrift/transport/TSocket.py:79
+calls=5 79
+260 2
+
+fn=<method 'settimeout' of '_socket.socket' objects>
+0 0
+
+fn=<method 'iteritems' of 'dict' objects>
+0 14
+
+fn=<method 'read' of 'cStringIO.StringI' objects>
+0 83
+
+fn=_get_next_server /home/wojciech/.pyenv/versions/cassandra/lib/python2.7/site-packages/pycassa/pool.py:402
+402 0
+cfn=<len>
+calls=5 0
+402 0
+
+fn=<operator.gt>
+0 0
+
+fn=writeString /home/wojciech/.pyenv/versions/cassandra/lib/python2.7/site-packages/thrift/protocol/TBinaryProtocol.py:121
+121 64
+cfn=write /home/wojciech/.pyenv/versions/cassandra/lib/python2.7/site-packages/thrift/transport/TTransport.py:279
+calls=8219 279
+121 43
+cfn=writeI32 /home/wojciech/.pyenv/versions/cassandra/lib/python2.7/site-packages/thrift/protocol/TBinaryProtocol.py:109
+calls=8219 109
+121 107
+cfn=<len>
+calls=8219 0
+121 10
+
+fn=get_keyspace_description /home/wojciech/.pyenv/versions/cassandra/lib/python2.7/site-packages/pycassa/pool.py:165
+165 0
+cfn=new_f /home/wojciech/.pyenv/versions/cassandra/lib/python2.7/site-packages/pycassa/pool.py:119
+calls=1 119
+165 1
+
+fn=_pack_value /home/wojciech/.pyenv/versions/cassandra/lib/python2.7/site-packages/pycassa/columnfamily.py:453
+453 90
+cfn=encode_int /home/wojciech/.pyenv/versions/cassandra/lib/python2.7/site-packages/pycassa/marshal.py:379
+calls=8213 379
+453 201
+cfn=<method 'get' of 'dict' objects>
+calls=8213 0
+453 11
+cfn=_pack_name /home/wojciech/.pyenv/versions/cassandra/lib/python2.7/site-packages/pycassa/columnfamily.py:411
+calls=8213 411
+453 72
+
+fn=readMessageEnd /home/wojciech/.pyenv/versions/cassandra/lib/python2.7/site-packages/thrift/protocol/TBinaryProtocol.py:145
+145 10
+
+fn=<id>
+0 21
+
+fn=<setattr>
+0 0
+
+fn=_set_key_validation_class /home/wojciech/.pyenv/versions/cassandra/lib/python2.7/site-packages/pycassa/columnfamily.py:244
+244 0
+cfn=packer_for /home/wojciech/.pyenv/versions/cassandra/lib/python2.7/site-packages/pycassa/marshal.py:226
+calls=1 226
+244 0
+cfn=extract_type_name /home/wojciech/.pyenv/versions/cassandra/lib/python2.7/site-packages/pycassa/marshal.py:33
+calls=1 33
+244 0
+cfn=unpacker_for /home/wojciech/.pyenv/versions/cassandra/lib/python2.7/site-packages/pycassa/marshal.py:323
+calls=1 323
+244 0
+cfn=<isinstance>
+calls=1 0
+244 0
+
+fn=encode_int /home/wojciech/.pyenv/versions/cassandra/lib/python2.7/site-packages/pycassa/marshal.py:379
+379 255
+cfn=<_struct.pack>
+calls=32342 0
+379 83
+cfn=<method 'append' of 'list' objects>
+calls=32598 0
+379 44
+cfn=<method 'join' of 'str' objects>
+calls=16426 0
+379 135
+
+fn=write /home/wojciech/.pyenv/versions/cassandra/lib/python2.7/site-packages/pycassa/cassandra/Cassandra.py:2968
+2968 0
+cfn=write /home/wojciech/.pyenv/versions/cassandra/lib/python2.7/site-packages/thrift/transport/TTransport.py:279
+calls=5 279
+2968 0
+cfn=<thrift.protocol.fastbinary.encode_binary>
+calls=5 0
+2968 0
+
+fn=__init__ /home/wojciech/.pyenv/versions/cassandra/lib/python2.7/site-packages/pycassa/cassandra/Cassandra.py:5538
+5538 25
+
+fn=ToASCII /home/wojciech/.pyenv/versions/cassandra/lib/python2.7/encodings/idna.py:62
+62 0
+cfn=<len>
+calls=20 0
+62 0
+cfn=<method 'encode' of 'unicode' objects>
+calls=20 0
+62 0
+
+fn=put /home/wojciech/.pyenv/versions/cassandra/lib/python2.7/site-packages/pycassa/pool.py:474
+474 212
+cfn=_is_in_queue_or_disposed /home/wojciech/.pyenv/versions/cassandra/lib/python2.7/site-packages/pycassa/pool.py:88
+calls=8214 88
+474 29
+cfn=_checkin /home/wojciech/.pyenv/versions/cassandra/lib/python2.7/site-packages/pycassa/pool.py:73
+calls=8214 73
+474 24
+cfn=<hasattr>
+calls=8214 0
+474 24
+cfn=put_nowait /home/wojciech/.pyenv/versions/2.7.5/lib/python2.7/Queue.py:142
+calls=8214 142
+474 449
+cfn=_notify_on_checkin /home/wojciech/.pyenv/versions/cassandra/lib/python2.7/site-packages/pycassa/pool.py:703
+calls=8214 703
+474 408
+cfn=isOpen /home/wojciech/.pyenv/versions/cassandra/lib/python2.7/site-packages/thrift/transport/TTransport.py:257
+calls=8214 257
+474 51
+
+fn=add_child_logger /home/wojciech/.pyenv/versions/cassandra/lib/python2.7/site-packages/pycassa/logging/pycassa_logger.py:94
+94 0
+cfn=getLogger /home/wojciech/.pyenv/versions/2.7.5/lib/python2.7/logging/__init__.py:1549
+calls=1 1549
+94 0
+cfn=<method 'append' of 'list' objects>
+calls=1 0
+94 0
+
+fn=getLogger /home/wojciech/.pyenv/versions/2.7.5/lib/python2.7/logging/__init__.py:1549
+1549 0
+cfn=getLogger /home/wojciech/.pyenv/versions/2.7.5/lib/python2.7/logging/__init__.py:1007
+calls=1 1007
+1549 0
+
+fn=__init__ /home/wojciech/.pyenv/versions/cassandra/lib/python2.7/site-packages/pycassa/pool.py:48
+48 0
+cfn=<time.time>
+calls=5 0
+48 0
+cfn=__init__ /home/wojciech/.pyenv/versions/cassandra/lib/python2.7/site-packages/pycassa/connection.py:33
+calls=5 33
+48 7
+cfn=_notify_on_connect /home/wojciech/.pyenv/versions/cassandra/lib/python2.7/site-packages/pycassa/pool.py:690
+calls=5 690
+48 0
+
+fn=<method 'split' of '_sre.SRE_Pattern' objects>
+0 0
+
+fn=packer_for /home/wojciech/.pyenv/versions/cassandra/lib/python2.7/site-packages/pycassa/marshal.py:226
+226 0
+cfn=extract_type_name /home/wojciech/.pyenv/versions/cassandra/lib/python2.7/site-packages/pycassa/marshal.py:33
+calls=3 33
+226 0
+
+fn=connection_created /home/wojciech/.pyenv/versions/cassandra/lib/python2.7/site-packages/pycassa/logging/pool_logger.py:13
+13 0
+cfn=<id>
+calls=5 0
+13 0
+cfn=<method 'get' of 'dict' objects>
+calls=15 0
+13 0
+cfn=log /home/wojciech/.pyenv/versions/2.7.5/lib/python2.7/logging/__init__.py:1198
+calls=5 1198
+13 0
+
+fn=read /home/wojciech/.pyenv/versions/cassandra/lib/python2.7/site-packages/pycassa/cassandra/Cassandra.py:5650
+5650 107
+cfn=<thrift.protocol.fastbinary.decode_binary>
+calls=8213 0
+5650 79
+cfn=<isinstance>
+calls=8213 0
+5650 18
+
+fn=encode /home/wojciech/.pyenv/versions/cassandra/lib/python2.7/encodings/idna.py:147
+147 0
+cfn=ToASCII /home/wojciech/.pyenv/versions/cassandra/lib/python2.7/encodings/idna.py:62
+calls=20 62
+147 0
+cfn=<method 'split' of '_sre.SRE_Pattern' objects>
+calls=5 0
+147 0
+cfn=<method 'append' of 'list' objects>
+calls=20 0
+147 0
+cfn=<method 'join' of 'str' objects>
+calls=5 0
+147 0
+cfn=<len>
+calls=10 0
+147 0
+
+fn=Condition /home/wojciech/.pyenv/versions/2.7.5/lib/python2.7/threading.py:241
+241 0
+cfn=__init__ /home/wojciech/.pyenv/versions/2.7.5/lib/python2.7/threading.py:259
+calls=3 259
+241 0
+
+fn=__init__ /home/wojciech/.pyenv/versions/cassandra/lib/python2.7/site-packages/thrift/protocol/TBinaryProtocol.py:39
+39 0
+cfn=__init__ /home/wojciech/.pyenv/versions/cassandra/lib/python2.7/site-packages/thrift/protocol/TProtocol.py:40
+calls=5 40
+39 0
+
+fn=recv_set_keyspace /home/wojciech/.pyenv/versions/cassandra/lib/python2.7/site-packages/pycassa/cassandra/Cassandra.py:509
+509 0
+cfn=readMessageEnd /home/wojciech/.pyenv/versions/cassandra/lib/python2.7/site-packages/thrift/protocol/TBinaryProtocol.py:145
+calls=5 145
+509 0
+cfn=__init__ /home/wojciech/.pyenv/versions/cassandra/lib/python2.7/site-packages/pycassa/cassandra/Cassandra.py:3008
+calls=5 3008
+509 0
+cfn=readMessageBegin /home/wojciech/.pyenv/versions/cassandra/lib/python2.7/site-packages/thrift/protocol/TBinaryProtocol.py:125
+calls=5 125
+509 1
+cfn=read /home/wojciech/.pyenv/versions/cassandra/lib/python2.7/site-packages/pycassa/cassandra/Cassandra.py:3011
+calls=5 3011
+509 0
+
+fn=__init__ /home/wojciech/.pyenv/versions/cassandra/lib/python2.7/site-packages/pycassa/cassandra/Cassandra.py:2946
+2946 0
+
+fn=<thread.get_ident>
+0 0
+
+fn=notify /home/wojciech/.pyenv/versions/2.7.5/lib/python2.7/threading.py:372
+372 132
+cfn=_is_owned /home/wojciech/.pyenv/versions/2.7.5/lib/python2.7/threading.py:299
+calls=16433 299
+372 106
+cfn=_note /home/wojciech/.pyenv/versions/2.7.5/lib/python2.7/threading.py:63
+calls=16433 63
+372 28
+
+fn=__init__ /home/wojciech/.pyenv/versions/cassandra/lib/python2.7/site-packages/pycassa/columnfamily.py:270
+270 0
+cfn=<method 'iteritems' of 'dict' objects>
+calls=1 0
+270 0
+cfn=load_schema /home/wojciech/.pyenv/versions/cassandra/lib/python2.7/site-packages/pycassa/columnfamily.py:299
+calls=1 299
+270 2
+
+fn=readI32 /home/wojciech/.pyenv/versions/cassandra/lib/python2.7/site-packages/thrift/protocol/TBinaryProtocol.py:205
+205 153
+cfn=readAll /home/wojciech/.pyenv/versions/cassandra/lib/python2.7/site-packages/thrift/transport/TTransport.py:54
+calls=24657 54
+205 4698
+cfn=<_struct.unpack>
+calls=24657 0
+205 42
+
+fn=__init__ /home/wojciech/.pyenv/versions/cassandra/lib/python2.7/site-packages/pycassa/cassandra/Cassandra.py:7060
+7060 0
+
+fn=__init__ /home/wojciech/.pyenv/versions/cassandra/lib/python2.7/site-packages/pycassa/cassandra/ttypes.py:2627
+2627 0
+
+fn=__init__ /home/wojciech/.pyenv/versions/2.7.5/lib/python2.7/socket.py:185
+185 0
+cfn=<setattr>
+calls=30 0
+185 0
+cfn=<getattr>
+calls=30 0
+185 0
+
+fn=isOpen /home/wojciech/.pyenv/versions/cassandra/lib/python2.7/site-packages/thrift/transport/TSocket.py:67
+67 15
+
+fn=<thrift.protocol.fastbinary.decode_binary>
+0 66
+cfn=cstringio_buf /home/wojciech/.pyenv/versions/cassandra/lib/python2.7/site-packages/thrift/transport/TTransport.py:296
+calls=8219 296
+0 12
+cfn=__init__ /home/wojciech/.pyenv/versions/cassandra/lib/python2.7/site-packages/pycassa/cassandra/ttypes.py:2627
+calls=1 2627
+0 0
+cfn=__init__ /home/wojciech/.pyenv/versions/cassandra/lib/python2.7/site-packages/pycassa/cassandra/ttypes.py:3050
+calls=1 3050
+0 0
+
+fn=connection_checked_in /home/wojciech/.pyenv/versions/cassandra/lib/python2.7/site-packages/pycassa/logging/pool_logger.py:32
+32 141
+cfn=<id>
+calls=8214 0
+32 11
+cfn=<method 'get' of 'dict' objects>
+calls=24642 0
+32 30
+cfn=log /home/wojciech/.pyenv/versions/2.7.5/lib/python2.7/logging/__init__.py:1198
+calls=8214 1198
+32 148
+
+fn=recv_batch_mutate /home/wojciech/.pyenv/versions/cassandra/lib/python2.7/site-packages/pycassa/cassandra/Cassandra.py:1072
+1072 182
+cfn=readMessageEnd /home/wojciech/.pyenv/versions/cassandra/lib/python2.7/site-packages/thrift/protocol/TBinaryProtocol.py:145
+calls=8213 145
+1072 10
+cfn=read /home/wojciech/.pyenv/versions/cassandra/lib/python2.7/site-packages/pycassa/cassandra/Cassandra.py:5650
+calls=8213 5650
+1072 204
+cfn=readMessageBegin /home/wojciech/.pyenv/versions/cassandra/lib/python2.7/site-packages/thrift/protocol/TBinaryProtocol.py:125
+calls=8213 125
+1072 5200
+cfn=__init__ /home/wojciech/.pyenv/versions/cassandra/lib/python2.7/site-packages/pycassa/cassandra/Cassandra.py:5645
+calls=8213 5645
+1072 41
+
+fn=__init__ /home/wojciech/.pyenv/versions/cassandra/lib/python2.7/site-packages/thrift/transport/TSocket.py:50
+50 0
+
+fn=setTimeout /home/wojciech/.pyenv/versions/cassandra/lib/python2.7/site-packages/thrift/transport/TSocket.py:70
+70 0
+
+fn=flush /home/wojciech/.pyenv/versions/cassandra/lib/python2.7/site-packages/thrift/transport/TSocket.py:135
+135 12
+
+fn=write /home/wojciech/.pyenv/versions/cassandra/lib/python2.7/site-packages/pycassa/cassandra/Cassandra.py:7017
+7017 0
+cfn=write /home/wojciech/.pyenv/versions/cassandra/lib/python2.7/site-packages/thrift/transport/TTransport.py:279
+calls=1 279
+7017 0
+cfn=<thrift.protocol.fastbinary.encode_binary>
+calls=1 0
+7017 0
+
+fn=<_struct.pack>
+0 170
+
+fn=<method 'read' of 'cStringIO.StringO' objects>
+0 0
+
+fn=execute /home/wojciech/.pyenv/versions/cassandra/lib/python2.7/site-packages/pycassa/pool.py:568
+568 144
+cfn=get_keyspace_description /home/wojciech/.pyenv/versions/cassandra/lib/python2.7/site-packages/pycassa/pool.py:165
+calls=1 165
+568 1
+cfn=new_f /home/wojciech/.pyenv/versions/cassandra/lib/python2.7/site-packages/pycassa/pool.py:119
+calls=8213 119
+568 7971
+cfn=<getattr>
+calls=8214 0
+568 13
+cfn=get /home/wojciech/.pyenv/versions/cassandra/lib/python2.7/site-packages/pycassa/pool.py:527
+calls=8214 527
+568 1204
+cfn=return_to_pool /home/wojciech/.pyenv/versions/cassandra/lib/python2.7/site-packages/pycassa/pool.py:63
+calls=8214 63
+568 1243
+
+fn=_set_column_validators /home/wojciech/.pyenv/versions/cassandra/lib/python2.7/site-packages/pycassa/columnfamily.py:234
+234 0
+cfn=__init__ /home/wojciech/.pyenv/versions/cassandra/lib/python2.7/site-packages/pycassa/columnfamily.py:28
+calls=1 28
+234 0
+
+fn=__init__ /home/wojciech/.pyenv/versions/cassandra/lib/python2.7/site-packages/pycassa/cassandra/Cassandra.py:3008
+3008 0
+
+fn=<cStringIO.StringIO>
+0 85
+
+fn=describe_keyspace /home/wojciech/.pyenv/versions/cassandra/lib/python2.7/site-packages/pycassa/cassandra/Cassandra.py:1419
+1419 0
+cfn=send_describe_keyspace /home/wojciech/.pyenv/versions/cassandra/lib/python2.7/site-packages/pycassa/cassandra/Cassandra.py:1429
+calls=1 1429
+1419 0
+cfn=recv_describe_keyspace /home/wojciech/.pyenv/versions/cassandra/lib/python2.7/site-packages/pycassa/cassandra/Cassandra.py:1437
+calls=1 1437
+1419 0
+
+fn=<lambda> /home/wojciech/.pyenv/versions/cassandra/lib/python2.7/site-packages/pycassa/columnfamily.py:508
+508 108
+cfn=_pack_value /home/wojciech/.pyenv/versions/cassandra/lib/python2.7/site-packages/pycassa/columnfamily.py:453
+calls=8213 453
+508 377
+cfn=_pack_name /home/wojciech/.pyenv/versions/cassandra/lib/python2.7/site-packages/pycassa/columnfamily.py:411
+calls=8213 411
+508 94
+cfn=_make_normal_cosc /home/wojciech/.pyenv/versions/cassandra/lib/python2.7/site-packages/pycassa/columnfamily.py:197
+calls=8213 197
+508 141
+cfn=__init__ /home/wojciech/.pyenv/versions/cassandra/lib/python2.7/site-packages/pycassa/cassandra/ttypes.py:2060
+calls=8213 2060
+508 22
+
+fn=readMessageBegin /home/wojciech/.pyenv/versions/cassandra/lib/python2.7/site-packages/thrift/protocol/TBinaryProtocol.py:125
+125 118
+cfn=readI32 /home/wojciech/.pyenv/versions/cassandra/lib/python2.7/site-packages/thrift/protocol/TBinaryProtocol.py:205
+calls=16438 205
+125 4690
+cfn=readString /home/wojciech/.pyenv/versions/cassandra/lib/python2.7/site-packages/thrift/protocol/TBinaryProtocol.py:220
+calls=8219 220
+125 394
+
+fn=_make_mutation_list /home/wojciech/.pyenv/versions/cassandra/lib/python2.7/site-packages/pycassa/columnfamily.py:504
+504 83
+cfn=<map>
+calls=8213 0
+504 839
+cfn=<method 'iteritems' of 'dict' objects>
+calls=8213 0
+504 14
+
+fn=getEffectiveLevel /home/wojciech/.pyenv/versions/2.7.5/lib/python2.7/logging/__init__.py:1328
+1328 64
+
+fn=<method 'items' of 'dict' objects>
+0 0
+
+fn=__init__ /home/wojciech/.pyenv/versions/cassandra/lib/python2.7/site-packages/thrift/protocol/TProtocol.py:40
+40 0
+
+fn=_set_column_name_class /home/wojciech/.pyenv/versions/cassandra/lib/python2.7/site-packages/pycassa/columnfamily.py:138
+138 0
+cfn=packer_for /home/wojciech/.pyenv/versions/cassandra/lib/python2.7/site-packages/pycassa/marshal.py:226
+calls=1 226
+138 0
+cfn=extract_type_name /home/wojciech/.pyenv/versions/cassandra/lib/python2.7/site-packages/pycassa/marshal.py:33
+calls=1 33
+138 0
+cfn=unpacker_for /home/wojciech/.pyenv/versions/cassandra/lib/python2.7/site-packages/pycassa/marshal.py:323
+calls=1 323
+138 0
+cfn=<isinstance>
+calls=1 0
+138 0
+
+fn=__init__ /home/wojciech/.pyenv/versions/cassandra/lib/python2.7/site-packages/pycassa/logging/pool_logger.py:6
+6 0
+cfn=add_child_logger /home/wojciech/.pyenv/versions/cassandra/lib/python2.7/site-packages/pycassa/logging/pycassa_logger.py:94
+calls=1 94
+6 0
+cfn=__init__ /home/wojciech/.pyenv/versions/cassandra/lib/python2.7/site-packages/pycassa/logging/pycassa_logger.py:54
+calls=1 54
+6 0
+
+fn=acquire /home/wojciech/.pyenv/versions/2.7.5/lib/python2.7/threading.py:146
+146 0
+cfn=<thread.get_ident>
+calls=1 0
+146 0
+cfn=<method 'acquire' of 'thread.lock' objects>
+calls=1 0
+146 0
+cfn=_note /home/wojciech/.pyenv/versions/2.7.5/lib/python2.7/threading.py:63
+calls=1 63
+146 0
+
+fn=__init__ /home/wojciech/.pyenv/versions/cassandra/lib/python2.7/site-packages/pycassa/logging/pycassa_logger.py:54
+54 0
+cfn=<hasattr>
+calls=1 0
+54 0
+
+fn=extract_type_name /home/wojciech/.pyenv/versions/cassandra/lib/python2.7/site-packages/pycassa/marshal.py:33
+33 0
+cfn=<method 'rfind' of 'str' objects>
+calls=9 0
+33 0
+
+fn=__init__ /home/wojciech/.pyenv/versions/cassandra/lib/python2.7/site-packages/pycassa/cassandra/Cassandra.py:5645
+5645 41
+
+fn=unpacker_for /home/wojciech/.pyenv/versions/cassandra/lib/python2.7/site-packages/pycassa/marshal.py:323
+323 0
+cfn=extract_type_name /home/wojciech/.pyenv/versions/cassandra/lib/python2.7/site-packages/pycassa/marshal.py:33
+calls=3 33
+323 0
+
+fn=send_describe_keyspace /home/wojciech/.pyenv/versions/cassandra/lib/python2.7/site-packages/pycassa/cassandra/Cassandra.py:1429
+1429 0
+cfn=write /home/wojciech/.pyenv/versions/cassandra/lib/python2.7/site-packages/pycassa/cassandra/Cassandra.py:7017
+calls=1 7017
+1429 0
+cfn=__init__ /home/wojciech/.pyenv/versions/cassandra/lib/python2.7/site-packages/pycassa/cassandra/Cassandra.py:6995
+calls=1 6995
+1429 0
+cfn=writeMessageEnd /home/wojciech/.pyenv/versions/cassandra/lib/python2.7/site-packages/thrift/protocol/TBinaryProtocol.py:54
+calls=1 54
+1429 0
+cfn=flush /home/wojciech/.pyenv/versions/cassandra/lib/python2.7/site-packages/thrift/transport/TTransport.py:282
+calls=1 282
+1429 0
+cfn=writeMessageBegin /home/wojciech/.pyenv/versions/cassandra/lib/python2.7/site-packages/thrift/protocol/TBinaryProtocol.py:44
+calls=1 44
+1429 0
+
+fn=<method 'getvalue' of 'cStringIO.StringO' objects>
+0 14
+
+fn=_is_in_queue_or_disposed /home/wojciech/.pyenv/versions/cassandra/lib/python2.7/site-packages/pycassa/pool.py:88
+88 29
+
+fn=<method 'get' of 'dict' objects>
+0 73
+
+fn=<thread.allocate_lock>
+0 0
+
+fn=read /home/wojciech/.pyenv/versions/cassandra/lib/python2.7/site-packages/thrift/transport/TSocket.py:101
+101 155
+cfn=<method 'recv' of '_socket.socket' objects>
+calls=16438 0
+101 3514
+cfn=<len>
+calls=16438 0
+101 26
+
+fn=send_batch_mutate /home/wojciech/.pyenv/versions/cassandra/lib/python2.7/site-packages/pycassa/cassandra/Cassandra.py:1063
+1063 195
+cfn=__init__ /home/wojciech/.pyenv/versions/cassandra/lib/python2.7/site-packages/pycassa/cassandra/Cassandra.py:5538
+calls=8213 5538
+1063 25
+cfn=writeMessageEnd /home/wojciech/.pyenv/versions/cassandra/lib/python2.7/site-packages/thrift/protocol/TBinaryProtocol.py:54
+calls=8213 54
+1063 11
+cfn=flush /home/wojciech/.pyenv/versions/cassandra/lib/python2.7/site-packages/thrift/transport/TTransport.py:282
+calls=8213 282
+1063 942
+cfn=writeMessageBegin /home/wojciech/.pyenv/versions/cassandra/lib/python2.7/site-packages/thrift/protocol/TBinaryProtocol.py:44
+calls=8213 44
+1063 570
+cfn=write /home/wojciech/.pyenv/versions/cassandra/lib/python2.7/site-packages/pycassa/cassandra/Cassandra.py:5584
+calls=8213 5584
+1063 268
+
+fn=_get_new_wrapper /home/wojciech/.pyenv/versions/cassandra/lib/python2.7/site-packages/pycassa/pool.py:447
+447 0
+cfn=__init__ /home/wojciech/.pyenv/versions/cassandra/lib/python2.7/site-packages/pycassa/pool.py:48
+calls=5 48
+447 7
+
+fn=<callable>
+0 0
+
+fn=__init__ /home/wojciech/.pyenv/versions/cassandra/lib/python2.7/site-packages/pycassa/cassandra/Cassandra.py:6995
+6995 0
+
+fn=_get /home/wojciech/.pyenv/versions/2.7.5/lib/python2.7/Queue.py:208
+208 30
+cfn=<method 'popleft' of 'collections.deque' objects>
+calls=8214 0
+208 10
+
+fn=writeMessageEnd /home/wojciech/.pyenv/versions/cassandra/lib/python2.7/site-packages/thrift/protocol/TBinaryProtocol.py:54
+54 11
+
+fn=isEnabledFor /home/wojciech/.pyenv/versions/2.7.5/lib/python2.7/logging/__init__.py:1342
+1342 86
+cfn=getEffectiveLevel /home/wojciech/.pyenv/versions/2.7.5/lib/python2.7/logging/__init__.py:1328
+calls=16434 1328
+1342 64
+
+fn=__init__ /home/wojciech/.pyenv/versions/2.7.5/lib/python2.7/threading.py:259
+259 0
+cfn=__init__ /home/wojciech/.pyenv/versions/2.7.5/lib/python2.7/threading.py:58
+calls=3 58
+259 0
+
+fn=__init__ /home/wojciech/.pyenv/versions/cassandra/lib/python2.7/site-packages/pycassa/pool.py:270
+270 0
+cfn=_set_max_overflow /home/wojciech/.pyenv/versions/cassandra/lib/python2.7/site-packages/pycassa/pool.py:209
+calls=1 209
+270 0
+cfn=add_listener /home/wojciech/.pyenv/versions/cassandra/lib/python2.7/site-packages/pycassa/pool.py:611
+calls=1 611
+270 0
+cfn=<id>
+calls=1 0
+270 0
+cfn=__init__ /home/wojciech/.pyenv/versions/cassandra/lib/python2.7/site-packages/pycassa/logging/pool_logger.py:6
+calls=1 6
+270 0
+cfn=<method 'get' of 'dict' objects>
+calls=1 0
+270 0
+cfn=<thread.allocate_lock>
+calls=1 0
+270 0
+cfn=set_server_list /home/wojciech/.pyenv/versions/cassandra/lib/python2.7/site-packages/pycassa/pool.py:384
+calls=1 384
+270 0
+cfn=__init__ /home/wojciech/.pyenv/versions/2.7.5/lib/python2.7/Queue.py:26
+calls=1 26
+270 0
+cfn=fill /home/wojciech/.pyenv/versions/cassandra/lib/python2.7/site-packages/pycassa/pool.py:433
+calls=1 433
+270 8
+
+fn=_checkin /home/wojciech/.pyenv/versions/cassandra/lib/python2.7/site-packages/pycassa/pool.py:73
+73 24
+
+fn=__init__ /home/wojciech/.pyenv/versions/cassandra/lib/python2.7/site-packages/pycassa/cassandra/ttypes.py:196
+196 28
+
+fn=__init__ /home/wojciech/.pyenv/versions/cassandra/lib/python2.7/site-packages/pycassa/cassandra/ttypes.py:559
+559 29
+
+fn=<method 'intersection' of 'set' objects>
+0 0
+
+fn=new_f /home/wojciech/.pyenv/versions/cassandra/lib/python2.7/site-packages/pycassa/pool.py:119
+119 195
+cfn=batch_mutate /home/wojciech/.pyenv/versions/cassandra/lib/python2.7/site-packages/pycassa/cassandra/Cassandra.py:1049
+calls=8213 1049
+119 7754
+cfn=describe_keyspace /home/wojciech/.pyenv/versions/cassandra/lib/python2.7/site-packages/pycassa/cassandra/Cassandra.py:1419
+calls=1 1419
+119 1
+cfn=<method 'pop' of 'dict' objects>
+calls=16428 0
+119 22
+
+fn=load_schema /home/wojciech/.pyenv/versions/cassandra/lib/python2.7/site-packages/pycassa/columnfamily.py:299
+299 0
+cfn=_load_validation_classes /home/wojciech/.pyenv/versions/cassandra/lib/python2.7/site-packages/pycassa/columnfamily.py:327
+calls=1 327
+299 0
+cfn=_load_comparator_classes /home/wojciech/.pyenv/versions/cassandra/lib/python2.7/site-packages/pycassa/columnfamily.py:319
+calls=1 319
+299 0
+cfn=execute /home/wojciech/.pyenv/versions/cassandra/lib/python2.7/site-packages/pycassa/pool.py:568
+calls=1 568
+299 1
+cfn=_load_key_class /home/wojciech/.pyenv/versions/cassandra/lib/python2.7/site-packages/pycassa/columnfamily.py:334
+calls=1 334
+299 0
+
+fn=_notify_on_checkout /home/wojciech/.pyenv/versions/cassandra/lib/python2.7/site-packages/pycassa/pool.py:711
+711 65
+cfn=connection_checked_out /home/wojciech/.pyenv/versions/cassandra/lib/python2.7/site-packages/pycassa/logging/pool_logger.py:25
+calls=8214 25
+711 292
+
+fn=<method 'write' of 'cStringIO.StringO' objects>
+0 109
+
+fn=<method 'recv' of '_socket.socket' objects>
+0 3514
+
+fn=__init__ /home/wojciech/.pyenv/versions/cassandra/lib/python2.7/site-packages/pycassa/columnfamily.py:28
+28 0
+cfn=<method 'items' of 'dict' objects>
+calls=1 0
+28 0
+
+fn=writeI32 /home/wojciech/.pyenv/versions/cassandra/lib/python2.7/site-packages/thrift/protocol/TBinaryProtocol.py:109
+109 138
+cfn=write /home/wojciech/.pyenv/versions/cassandra/lib/python2.7/site-packages/thrift/transport/TTransport.py:279
+calls=24657 279
+109 161
+cfn=<_struct.pack>
+calls=24657 0
+109 65
+
+fn=set_server_list /home/wojciech/.pyenv/versions/cassandra/lib/python2.7/site-packages/pycassa/pool.py:384
+384 0
+cfn=shuffle /home/wojciech/.pyenv/versions/2.7.5/lib/python2.7/random.py:276
+calls=1 276
+384 0
+cfn=<callable>
+calls=1 0
+384 0
+cfn=_notify_on_server_list /home/wojciech/.pyenv/versions/cassandra/lib/python2.7/site-packages/pycassa/pool.py:673
+calls=1 673
+384 0
+
+fn=write /home/wojciech/.pyenv/versions/cassandra/lib/python2.7/site-packages/thrift/transport/TSocket.py:121
+121 78
+cfn=<len>
+calls=8219 0
+121 9
+cfn=<method 'send' of '_socket.socket' objects>
+calls=8219 0
+121 621
+
+fn=__init__ /home/wojciech/.pyenv/versions/2.7.5/lib/python2.7/Queue.py:26
+26 0
+cfn=_init /home/wojciech/.pyenv/versions/2.7.5/lib/python2.7/Queue.py:197
+calls=1 197
+26 0
+cfn=Condition /home/wojciech/.pyenv/versions/2.7.5/lib/python2.7/threading.py:241
+calls=3 241
+26 0
+cfn=<thread.allocate_lock>
+calls=1 0
+26 0
+
+fn=default_transport_factory /home/wojciech/.pyenv/versions/cassandra/lib/python2.7/site-packages/pycassa/connection.py:23
+23 0
+cfn=__init__ /home/wojciech/.pyenv/versions/cassandra/lib/python2.7/site-packages/thrift/transport/TTransport.py:252
+calls=5 252
+23 0
+
+fn=_resolveAddr /home/wojciech/.pyenv/versions/cassandra/lib/python2.7/site-packages/thrift/transport/TSocket.py:29
+29 0
+cfn=<_socket.getaddrinfo>
+calls=5 0
+29 1
+
+fn=_checkout /home/wojciech/.pyenv/versions/cassandra/lib/python2.7/site-packages/pycassa/pool.py:82
+82 26
+
+fn=<hasattr>
+0 24
+
+fn=connection_checked_out /home/wojciech/.pyenv/versions/cassandra/lib/python2.7/site-packages/pycassa/logging/pool_logger.py:25
+25 126
+cfn=<id>
+calls=8214 0
+25 10
+cfn=<method 'get' of 'dict' objects>
+calls=24642 0
+25 31
+cfn=log /home/wojciech/.pyenv/versions/2.7.5/lib/python2.7/logging/__init__.py:1198
+calls=8214 1198
+25 124
+
+fn=as_interface /home/wojciech/.pyenv/versions/cassandra/lib/python2.7/site-packages/pycassa/util.py:142
+142 0
+cfn=<operator.gt>
+calls=1 0
+142 0
+cfn=<method 'intersection' of 'set' objects>
+calls=1 0
+142 0
+cfn=<dir>
+calls=1 0
+142 0
+cfn=<isinstance>
+calls=2 0
+142 0
+
+fn=meth /home/wojciech/.pyenv/versions/2.7.5/lib/python2.7/socket.py:223
+223 0
+cfn=<method 'settimeout' of '_socket.socket' objects>
+calls=5 0
+223 0
+cfn=<method 'connect' of '_socket.socket' objects>
+calls=5 0
+223 1
+cfn=<getattr>
+calls=10 0
+223 0
+
+fn=_pack_name /home/wojciech/.pyenv/versions/cassandra/lib/python2.7/site-packages/pycassa/columnfamily.py:411
+411 76
+cfn=pack_bytes /home/wojciech/.pyenv/versions/cassandra/lib/python2.7/site-packages/pycassa/marshal.py:315
+calls=16426 315
+411 90
+
+fn=<method 'connect' of '_socket.socket' objects>
+0 1
+
+fn=_is_owned /home/wojciech/.pyenv/versions/2.7.5/lib/python2.7/threading.py:299
+299 71
+cfn=<method 'acquire' of 'thread.lock' objects>
+calls=16433 0
+299 34
+
+fn=readString /home/wojciech/.pyenv/versions/cassandra/lib/python2.7/site-packages/thrift/protocol/TBinaryProtocol.py:220
+220 53
+cfn=readI32 /home/wojciech/.pyenv/versions/cassandra/lib/python2.7/site-packages/thrift/protocol/TBinaryProtocol.py:205
+calls=8219 205
+220 204
+cfn=readAll /home/wojciech/.pyenv/versions/cassandra/lib/python2.7/site-packages/thrift/transport/TTransport.py:54
+calls=8219 54
+220 136
+
+fn=<method 'append' of 'list' objects>
+0 44
+
+fn=_set_super_column_name_class /home/wojciech/.pyenv/versions/cassandra/lib/python2.7/site-packages/pycassa/columnfamily.py:161
+161 0
+cfn=packer_for /home/wojciech/.pyenv/versions/cassandra/lib/python2.7/site-packages/pycassa/marshal.py:226
+calls=1 226
+161 0
+cfn=extract_type_name /home/wojciech/.pyenv/versions/cassandra/lib/python2.7/site-packages/pycassa/marshal.py:33
+calls=1 33
+161 0
+cfn=unpacker_for /home/wojciech/.pyenv/versions/cassandra/lib/python2.7/site-packages/pycassa/marshal.py:323
+calls=1 323
+161 0
+cfn=<isinstance>
+calls=1 0
+161 0
+
+fn=read /home/wojciech/.pyenv/versions/cassandra/lib/python2.7/site-packages/pycassa/cassandra/Cassandra.py:3011
+3011 0
+cfn=<thrift.protocol.fastbinary.decode_binary>
+calls=5 0
+3011 0
+cfn=<isinstance>
+calls=5 0
+3011 0
+
+fn=flush /home/wojciech/.pyenv/versions/cassandra/lib/python2.7/site-packages/thrift/transport/TTransport.py:282
+282 157
+cfn=flush /home/wojciech/.pyenv/versions/cassandra/lib/python2.7/site-packages/thrift/transport/TSocket.py:135
+calls=8219 135
+282 12
+cfn=<_struct.pack>
+calls=8219 0
+282 21
+cfn=<cStringIO.StringIO>
+calls=8219 0
+282 16
+cfn=<method 'getvalue' of 'cStringIO.StringO' objects>
+calls=8219 0
+282 14
+cfn=write /home/wojciech/.pyenv/versions/cassandra/lib/python2.7/site-packages/thrift/transport/TSocket.py:121
+calls=8219 121
+282 710
+cfn=<len>
+calls=8219 0
+282 10
+
+fn=open /home/wojciech/.pyenv/versions/cassandra/lib/python2.7/site-packages/thrift/transport/TSocket.py:79
+79 0
+cfn=__init__ /home/wojciech/.pyenv/versions/2.7.5/lib/python2.7/socket.py:185
+calls=5 185
+79 0
+cfn=_resolveAddr /home/wojciech/.pyenv/versions/cassandra/lib/python2.7/site-packages/thrift/transport/TSocket.py:29
+calls=5 29
+79 1
+cfn=meth /home/wojciech/.pyenv/versions/2.7.5/lib/python2.7/socket.py:223
+calls=10 223
+79 1
+
+fn=default_socket_factory /home/wojciech/.pyenv/versions/cassandra/lib/python2.7/site-packages/pycassa/connection.py:16
+16 0
+cfn=__init__ /home/wojciech/.pyenv/versions/cassandra/lib/python2.7/site-packages/thrift/transport/TSocket.py:50
+calls=5 50
+16 0
+
+fn=<method 'append' of 'collections.deque' objects>
+0 11
+
+fn=recv_describe_keyspace /home/wojciech/.pyenv/versions/cassandra/lib/python2.7/site-packages/pycassa/cassandra/Cassandra.py:1437
+1437 0
+cfn=readMessageEnd /home/wojciech/.pyenv/versions/cassandra/lib/python2.7/site-packages/thrift/protocol/TBinaryProtocol.py:145
+calls=1 145
+1437 0
+cfn=__init__ /home/wojciech/.pyenv/versions/cassandra/lib/python2.7/site-packages/pycassa/cassandra/Cassandra.py:7060
+calls=1 7060
+1437 0
+cfn=readMessageBegin /home/wojciech/.pyenv/versions/cassandra/lib/python2.7/site-packages/thrift/protocol/TBinaryProtocol.py:125
+calls=1 125
+1437 0
+cfn=read /home/wojciech/.pyenv/versions/cassandra/lib/python2.7/site-packages/pycassa/cassandra/Cassandra.py:7065
+calls=1 7065
+1437 0
+
+fn=send_set_keyspace /home/wojciech/.pyenv/versions/cassandra/lib/python2.7/site-packages/pycassa/cassandra/Cassandra.py:501
+501 0
+cfn=write /home/wojciech/.pyenv/versions/cassandra/lib/python2.7/site-packages/pycassa/cassandra/Cassandra.py:2968
+calls=5 2968
+501 0
+cfn=__init__ /home/wojciech/.pyenv/versions/cassandra/lib/python2.7/site-packages/pycassa/cassandra/Cassandra.py:2946
+calls=5 2946
+501 0
+cfn=writeMessageEnd /home/wojciech/.pyenv/versions/cassandra/lib/python2.7/site-packages/thrift/protocol/TBinaryProtocol.py:54
+calls=5 54
+501 0
+cfn=flush /home/wojciech/.pyenv/versions/cassandra/lib/python2.7/site-packages/thrift/transport/TTransport.py:282
+calls=5 282
+501 0
+cfn=writeMessageBegin /home/wojciech/.pyenv/versions/cassandra/lib/python2.7/site-packages/thrift/protocol/TBinaryProtocol.py:44
+calls=5 44
+501 0
+
+fn=<dir>
+0 0
+
+fn=set_keyspace /home/wojciech/.pyenv/versions/cassandra/lib/python2.7/site-packages/pycassa/connection.py:59
+59 0
+cfn=set_keyspace /home/wojciech/.pyenv/versions/cassandra/lib/python2.7/site-packages/pycassa/cassandra/Cassandra.py:493
+calls=5 493
+59 3
+
+fn=__init__ /home/wojciech/.pyenv/versions/cassandra/lib/python2.7/site-packages/pycassa/cassandra/ttypes.py:3050
+3050 0
+
+fn=<getattr>
+0 13
+
+fn=readFrame /home/wojciech/.pyenv/versions/cassandra/lib/python2.7/site-packages/thrift/transport/TTransport.py:274
+274 172
+cfn=<cStringIO.StringIO>
+calls=8219 0
+274 69
+cfn=readAll /home/wojciech/.pyenv/versions/cassandra/lib/python2.7/site-packages/thrift/transport/TTransport.py:54
+calls=16438 54
+274 3903
+cfn=<_struct.unpack>
+calls=8219 0
+274 34
+
+fn=<method 'acquire' of 'thread.lock' objects>
+0 78
+
+fn=fill /home/wojciech/.pyenv/versions/cassandra/lib/python2.7/site-packages/pycassa/pool.py:433
+433 0
+cfn=_checkin /home/wojciech/.pyenv/versions/cassandra/lib/python2.7/site-packages/pycassa/pool.py:73
+calls=5 73
+433 0
+cfn=_create_connection /home/wojciech/.pyenv/versions/cassandra/lib/python2.7/site-packages/pycassa/pool.py:415
+calls=5 415
+433 7
+cfn=put /home/wojciech/.pyenv/versions/2.7.5/lib/python2.7/Queue.py:107
+calls=5 107
+433 0
+
+fn=<method 'popleft' of 'collections.deque' objects>
+0 10
+
+fn=<method 'release' of 'thread.lock' objects>
+0 31
+
+fn=_make_normal_cosc /home/wojciech/.pyenv/versions/cassandra/lib/python2.7/site-packages/pycassa/columnfamily.py:197
+197 84
+cfn=__init__ /home/wojciech/.pyenv/versions/cassandra/lib/python2.7/site-packages/pycassa/cassandra/ttypes.py:196
+calls=8213 196
+197 28
+cfn=__init__ /home/wojciech/.pyenv/versions/cassandra/lib/python2.7/site-packages/pycassa/cassandra/ttypes.py:559
+calls=8213 559
+197 29
+
+fn=<_socket.getaddrinfo>
+0 0
+cfn=encode /home/wojciech/.pyenv/versions/cassandra/lib/python2.7/encodings/idna.py:147
+calls=5 147
+0 0
+
+fn=gm_timestamp /home/wojciech/.pyenv/versions/cassandra/lib/python2.7/site-packages/pycassa/columnfamily.py:63
+63 72
+cfn=<time.time>
+calls=8213 0
+63 21
+
+fn=_releaseLock /home/wojciech/.pyenv/versions/2.7.5/lib/python2.7/logging/__init__.py:219
+219 0
+cfn=release /home/wojciech/.pyenv/versions/2.7.5/lib/python2.7/threading.py:186
+calls=1 186
+219 0
+
+fn=get /home/wojciech/.pyenv/versions/cassandra/lib/python2.7/site-packages/pycassa/pool.py:527
+527 182
+cfn=get /home/wojciech/.pyenv/versions/2.7.5/lib/python2.7/Queue.py:150
+calls=8214 150
+527 382
+cfn=_notify_on_checkout /home/wojciech/.pyenv/versions/cassandra/lib/python2.7/site-packages/pycassa/pool.py:711
+calls=8214 711
+527 358
+cfn=_checkout /home/wojciech/.pyenv/versions/cassandra/lib/python2.7/site-packages/pycassa/pool.py:82
+calls=8214 82
+527 26
+cfn=_new_if_required /home/wojciech/.pyenv/versions/cassandra/lib/python2.7/site-packages/pycassa/pool.py:509
+calls=16428 509
+527 254
+
+fn=readAll /home/wojciech/.pyenv/versions/cassandra/lib/python2.7/site-packages/thrift/transport/TTransport.py:54
+54 412
+cfn=read /home/wojciech/.pyenv/versions/cassandra/lib/python2.7/site-packages/thrift/transport/TSocket.py:101
+calls=16438 101
+54 3696
+cfn=<len>
+calls=98628 0
+54 105
+cfn=read /home/wojciech/.pyenv/versions/cassandra/lib/python2.7/site-packages/thrift/transport/TTransport.py:266
+calls=32876 266
+54 4523
+
+fn=<method 'join' of 'str' objects>
+0 135
+
+fn=<len>
+0 230
+
+fn=<method 'encode' of 'unicode' objects>
+0 0
+
+fn=_new_if_required /home/wojciech/.pyenv/versions/cassandra/lib/python2.7/site-packages/pycassa/pool.py:509
+509 121
+cfn=empty /home/wojciech/.pyenv/versions/2.7.5/lib/python2.7/Queue.py:93
+calls=8214 93
+509 132
+
+fn=_notify_on_connect /home/wojciech/.pyenv/versions/cassandra/lib/python2.7/site-packages/pycassa/pool.py:690
+690 0
+cfn=connection_created /home/wojciech/.pyenv/versions/cassandra/lib/python2.7/site-packages/pycassa/logging/pool_logger.py:13
+calls=5 13
+690 0
+
+fn=__init__ /home/wojciech/.pyenv/versions/cassandra/lib/python2.7/site-packages/pycassa/cassandra/ttypes.py:2060
+2060 22
+
+fn=__init__ /home/wojciech/.pyenv/versions/cassandra/lib/python2.7/site-packages/pycassa/cassandra/Cassandra.py:455
+455 0
+
+fn=_notify_on_server_list /home/wojciech/.pyenv/versions/cassandra/lib/python2.7/site-packages/pycassa/pool.py:673
+673 0
+cfn=obtained_server_list /home/wojciech/.pyenv/versions/cassandra/lib/python2.7/site-packages/pycassa/logging/pool_logger.py:73
+calls=1 73
+673 0
+
+fn=<isinstance>
+0 74
+
+fn=read /home/wojciech/.pyenv/versions/cassandra/lib/python2.7/site-packages/pycassa/cassandra/Cassandra.py:7065
+7065 0
+cfn=<thrift.protocol.fastbinary.decode_binary>
+calls=1 0
+7065 0
+cfn=<isinstance>
+calls=1 0
+7065 0
+
+fn=_create_connection /home/wojciech/.pyenv/versions/cassandra/lib/python2.7/site-packages/pycassa/pool.py:415
+415 0
+cfn=_get_next_server /home/wojciech/.pyenv/versions/cassandra/lib/python2.7/site-packages/pycassa/pool.py:402
+calls=5 402
+415 0
+cfn=_get_new_wrapper /home/wojciech/.pyenv/versions/cassandra/lib/python2.7/site-packages/pycassa/pool.py:447
+calls=5 447
+415 7
+cfn=<len>
+calls=5 0
+415 0
+
+fn=_load_key_class /home/wojciech/.pyenv/versions/cassandra/lib/python2.7/site-packages/pycassa/columnfamily.py:334
+334 0
+cfn=_set_key_validation_class /home/wojciech/.pyenv/versions/cassandra/lib/python2.7/site-packages/pycassa/columnfamily.py:244
+calls=1 244
+334 0
+cfn=<hasattr>
+calls=1 0
+334 0
+
+fn=_put /home/wojciech/.pyenv/versions/2.7.5/lib/python2.7/Queue.py:204
+204 35
+cfn=<method 'append' of 'collections.deque' objects>
+calls=8219 0
+204 11
+
+fn=__init__ /home/wojciech/.pyenv/versions/2.7.5/lib/python2.7/threading.py:58
+58 0
+
+fn=_note /home/wojciech/.pyenv/versions/2.7.5/lib/python2.7/threading.py:63
+63 28
+
+fn=put_nowait /home/wojciech/.pyenv/versions/2.7.5/lib/python2.7/Queue.py:142
+142 39
+cfn=put /home/wojciech/.pyenv/versions/2.7.5/lib/python2.7/Queue.py:107
+calls=8214 107
+142 410
+
+fn=<method 'pop' of 'dict' objects>
+0 22
+
+fn=<_struct.unpack>
+0 77
+
+fn=log /home/wojciech/.pyenv/versions/2.7.5/lib/python2.7/logging/__init__.py:1198
+1198 101
+cfn=isEnabledFor /home/wojciech/.pyenv/versions/2.7.5/lib/python2.7/logging/__init__.py:1342
+calls=16434 1342
+1198 150
+cfn=<isinstance>
+calls=16434 0
+1198 20
+
+fn=obtained_server_list /home/wojciech/.pyenv/versions/cassandra/lib/python2.7/site-packages/pycassa/logging/pool_logger.py:73
+73 0
+cfn=<method 'get' of 'dict' objects>
+calls=3 0
+73 0
+cfn=<method 'join' of 'str' objects>
+calls=1 0
+73 0
+cfn=log /home/wojciech/.pyenv/versions/2.7.5/lib/python2.7/logging/__init__.py:1198
+calls=1 1198
+73 0
+
+fn=return_to_pool /home/wojciech/.pyenv/versions/cassandra/lib/python2.7/site-packages/pycassa/pool.py:63
+63 43
+cfn=put /home/wojciech/.pyenv/versions/cassandra/lib/python2.7/site-packages/pycassa/pool.py:474
+calls=8214 474
+63 1199
+
+fn=read /home/wojciech/.pyenv/versions/cassandra/lib/python2.7/site-packages/thrift/transport/TTransport.py:266
+266 223
+cfn=<method 'read' of 'cStringIO.StringI' objects>
+calls=41090 0
+266 83
+cfn=<method 'read' of 'cStringIO.StringO' objects>
+calls=5 0
+266 0
+cfn=readFrame /home/wojciech/.pyenv/versions/cassandra/lib/python2.7/site-packages/thrift/transport/TTransport.py:274
+calls=8219 274
+266 4179
+cfn=<len>
+calls=32876 0
+266 36
+
+fn=<thrift.protocol.fastbinary.encode_binary>
+0 133
+
+fn=writeMessageBegin /home/wojciech/.pyenv/versions/cassandra/lib/python2.7/site-packages/thrift/protocol/TBinaryProtocol.py:44
+44 89
+cfn=writeString /home/wojciech/.pyenv/versions/cassandra/lib/python2.7/site-packages/thrift/protocol/TBinaryProtocol.py:121
+calls=8219 121
+44 225
+cfn=writeI32 /home/wojciech/.pyenv/versions/cassandra/lib/python2.7/site-packages/thrift/protocol/TBinaryProtocol.py:109
+calls=16438 109
+44 256
+
+fn=_notify_on_checkin /home/wojciech/.pyenv/versions/cassandra/lib/python2.7/site-packages/pycassa/pool.py:703
+703 76
+cfn=connection_checked_in /home/wojciech/.pyenv/versions/cassandra/lib/python2.7/site-packages/pycassa/logging/pool_logger.py:32
+calls=8214 32
+703 332
+
+fn=write /home/wojciech/.pyenv/versions/cassandra/lib/python2.7/site-packages/pycassa/cassandra/Cassandra.py:5584
+5584 86
+cfn=write /home/wojciech/.pyenv/versions/cassandra/lib/python2.7/site-packages/thrift/transport/TTransport.py:279
+calls=8213 279
+5584 48
+cfn=<thrift.protocol.fastbinary.encode_binary>
+calls=8213 0
+5584 133
+
+fn=put /home/wojciech/.pyenv/versions/2.7.5/lib/python2.7/Queue.py:107
+107 151
+cfn=_qsize /home/wojciech/.pyenv/versions/2.7.5/lib/python2.7/Queue.py:200
+calls=8219 200
+107 35
+cfn=notify /home/wojciech/.pyenv/versions/2.7.5/lib/python2.7/threading.py:372
+calls=8219 372
+107 146
+cfn=<method 'acquire' of 'thread.lock' objects>
+calls=8219 0
+107 18
+cfn=<method 'release' of 'thread.lock' objects>
+calls=8219 0
+107 10
+cfn=_put /home/wojciech/.pyenv/versions/2.7.5/lib/python2.7/Queue.py:204
+calls=8219 204
+107 47
+
+fn=getLogger /home/wojciech/.pyenv/versions/2.7.5/lib/python2.7/logging/__init__.py:1007
+1007 0
+cfn=_acquireLock /home/wojciech/.pyenv/versions/2.7.5/lib/python2.7/logging/__init__.py:210
+calls=1 210
+1007 0
+cfn=_releaseLock /home/wojciech/.pyenv/versions/2.7.5/lib/python2.7/logging/__init__.py:219
+calls=1 219
+1007 0
+cfn=<isinstance>
+calls=3 0
+1007 0
+
+fn=<method 'disable' of '_lsprof.Profiler' objects>
+0 0
+
+fn=<method 'send' of '_socket.socket' objects>
+0 621
+
+fn=insert /home/wojciech/.pyenv/versions/cassandra/lib/python2.7/site-packages/pycassa/columnfamily.py:988
+988 231
+cfn=_allow_retries /home/wojciech/.pyenv/versions/cassandra/lib/python2.7/site-packages/pycassa/columnfamily.py:230
+calls=8213 230
+988 14
+cfn=_pack_key /home/wojciech/.pyenv/versions/cassandra/lib/python2.7/site-packages/pycassa/columnfamily.py:484
+calls=8213 484
+988 377
+cfn=execute /home/wojciech/.pyenv/versions/cassandra/lib/python2.7/site-packages/pycassa/pool.py:568
+calls=8213 568
+988 10577
+cfn=_make_mutation_list /home/wojciech/.pyenv/versions/cassandra/lib/python2.7/site-packages/pycassa/columnfamily.py:504
+calls=8213 504
+988 937
+cfn=gm_timestamp /home/wojciech/.pyenv/versions/cassandra/lib/python2.7/site-packages/pycassa/columnfamily.py:63
+calls=8213 63
+988 94
+
+fn=isOpen /home/wojciech/.pyenv/versions/cassandra/lib/python2.7/site-packages/thrift/transport/TTransport.py:257
+257 36
+cfn=isOpen /home/wojciech/.pyenv/versions/cassandra/lib/python2.7/site-packages/thrift/transport/TSocket.py:67
+calls=8214 67
+257 15
+

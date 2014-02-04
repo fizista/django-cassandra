@@ -1,0 +1,13 @@
+Partition of a set of 1583494 objects. Total size = 185305056 bytes.
+ Index  Count   %     Size   % Cumulative  % Kind (class / dict of class)
+     0 365262  23 102273360  55 102273360  55 dict of cql.cassandra.ttypes.Column
+     1 730669  46 33124984  18 135398344  73 str
+     2 365262  23 26298864  14 161697208  87 cql.cassandra.ttypes.Column
+     3 121783   8 17545464   9 179242672  97 list
+     4      1   0  5917728   3 185160400 100 guppy.heapy.heapyc.NodeGraph
+     5    147   0    58824   0 185219224 100 dict (no owner)
+     6     65   0    34328   0 185253552 100 dict of guppy.etc.Glue.Interface
+     7     11   0    11528   0 185265080 100 dict of guppy.etc.Glue.Share
+     8     35   0     9800   0 185274880 100 dict of guppy.etc.Glue.Owner
+     9     65   0     4160   0 185279040 100 guppy.etc.Glue.Interface
+<41 more rows. Type e.g. '_.more' to view.>

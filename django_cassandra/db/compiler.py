@@ -1,18 +1,82 @@
+import re
+
 from django.db.models.sql import compiler
 from django.utils.six.moves import zip_longest
 
 
+class Counter(object):
+    """
+    Class counting calls.
+    
+    Example:
+    
+    > c1 = Counter()
+    > c1()
+    1
+    > c1()
+    2
+    
+    > c2 = Counter(lambda c: "-%d-" % (c,))
+    > c2()
+    '-1-'
+    > c2()
+    '-2-'
+    
+    """
+
+    def __init__(self, out_function=None):
+        """
+        
+        Args:
+            out_function - method(counter)
+        """
+        self.counter = 0
+        self.out_function = out_function
+
+    def __call__(self, *args, **kwargs):
+        """
+        Return:
+            method(counter, *args, **kwargs)
+            OR
+            counter - int
+        """
+        self.counter += 1
+        if self.out_function:
+            return self.out_function(self.counter, *args, **kwargs)
+        else:
+            return self.counter
+
+
+re_param = re.compile('%s')
+re_param_table_name = re.compile('("[^"]+")\.("[^"]+")')
+re_none = re.compile('([^"\']\s*)(None)(\s*[^"\'])')
+re_offset = re.compile('OFFSET\s+(\d+)')
+re_limit = re.compile('LIMIT\s+(\d+)')
+
+
+
 class SQLCompiler(compiler.SQLCompiler):
-    pass
 
+    def resolve_columns(self, row, fields=()):
+        values = [self.query.convert_values(v, f, connection=self.connection)
+                  for v, f in zip(row, fields)]
+        return tuple(values)
 
-class SQLInsertCompiler(compiler.SQLInsertCompiler, SQLCompiler):
+    def as_sql(self):
+        query, params = super(SQLCompiler, self).as_sql()
 
-    def __init__(self, *args, **kwargs):
-        self.return_id = False
-        super(SQLInsertCompiler, self).__init__(*args, **kwargs)
+        if params:
+            # correct parameters "%s" => :d<x>, where x = 1,2,3,...
+            param_counter = Counter(lambda c, m: ":d%s " % (c,))
+            query = re_param.sub(param_counter, query)
+            params = dict([('d%s' % (k), v) for k, v in enumerate(params, 1)])
 
-    def placeholder(self, num, field, val):
+        # remove the name of the table from parameters
+        query = re_param_table_name.sub(lambda m: m.groups()[1], query)
+
+        return query, params
+
+    def placeholder(self, field, val):
         if field is None:
             # A field value of None means the value is raw.
             return val
@@ -22,6 +86,15 @@ class SQLInsertCompiler(compiler.SQLInsertCompiler, SQLCompiler):
                 return "'%s'" % val
             else:
                 return "%s" % str(val)
+
+
+class SQLInsertCompiler(compiler.SQLInsertCompiler, SQLCompiler):
+
+    def __init__(self, *args, **kwargs):
+        self.return_id = False
+        super(SQLInsertCompiler, self).__init__(*args, **kwargs)
+
+    placeholder = SQLCompiler.placeholder
 
     def as_sql(self):
 
@@ -54,8 +127,8 @@ class SQLInsertCompiler(compiler.SQLInsertCompiler, SQLCompiler):
         # [ [:d<number> or <value>, :d<number> or <value>, ...], ...]
         # ###
         placeholders = (
-            (self.placeholder(num, data[0], data[1])
-             for num, data in enumerate(zip(fields, val)))
+            (self.placeholder(field, value)
+             for field, value in zip(fields, val))
             for val in values
         )
 
@@ -93,129 +166,19 @@ class SQLDeleteCompiler(compiler.SQLDeleteCompiler, SQLCompiler):
     pass
 
 
-from django.db.models.sql.expressions import SQLEvaluator
 class SQLUpdateCompiler(compiler.SQLUpdateCompiler, SQLCompiler):
-    def as_sql(self):
-        """
-        Creates the SQL for this query. Returns the SQL string and list of
-        parameters.
-        """
-        self.pre_sql_setup()
-        if not self.query.values:
-            return '', ()
-        table = self.query.tables[0]
-        qn = self.quote_name_unless_alias
-        result = ['UPDATE %s' % qn(table)]
-        result.append('SET')
-        values, update_params = [], []
-        for field, model, val in self.query.values:
-            if hasattr(val, 'prepare_database_save'):
-                val = val.prepare_database_save(field)
-            else:
-                val = field.get_db_prep_save(val, connection=self.connection)
 
-            # Getting the placeholder for the field.
-            if hasattr(field, 'get_placeholder'):
-                placeholder = field.get_placeholder(val, self.connection)
-            else:
-                placeholder = '%s'
+    as_sql = SQLCompiler.as_sql
 
-            if hasattr(val, 'evaluate'):
-                val = SQLEvaluator(val, self.query, allow_joins=False)
-            name = field.column
-            if hasattr(val, 'as_sql'):
-                sql, params = val.as_sql(qn, self.connection)
-                values.append('%s = %s' % (qn(name), sql))
-                update_params.extend(params)
-            elif val is not None:
-                values.append('%s = %s' % (qn(name), placeholder))
-                update_params.append(val)
-            else:
-                values.append('%s = NULL' % qn(name))
-        if not values:
-            return '', ()
-        result.append(', '.join(values))
-        where, params = self.query.where.as_sql(qn=qn, connection=self.connection)
-        if where:
-            result.append('WHERE %s' % where)
-        return ' '.join(result), tuple(update_params + params)
-
-    def execute_sql(self, result_type):
-        """
-        Execute the specified update. Returns the number of rows affected by
-        the primary update query. The "primary update query" is the first
-        non-empty query that is executed. Row counts for any subsequent,
-        related queries are not available.
-        """
-        cursor = super(SQLUpdateCompiler, self).execute_sql(result_type)
-        rows = cursor.rowcount if cursor else 0
-        is_empty = cursor is None
-        del cursor
-        for query in self.query.get_related_updates():
-            aux_rows = query.get_compiler(self.using).execute_sql(result_type)
-            if is_empty:
-                rows = aux_rows
-                is_empty = False
-        return rows
-
-    def pre_sql_setup(self):
-        """
-        If the update depends on results from other tables, we need to do some
-        munging of the "where" conditions to match the format required for
-        (portable) SQL updates. That is done here.
-
-        Further, if we are going to be running multiple updates, we pull out
-        the id values to update at this point so that they don't change as a
-        result of the progressive updates.
-        """
-        self.query.select_related = False
-        self.query.clear_ordering(True)
-        super(SQLUpdateCompiler, self).pre_sql_setup()
-        count = self.query.count_active_tables()
-        if not self.query.related_updates and count == 1:
-            return
-
-        # We need to use a sub-select in the where clause to filter on things
-        # from other tables.
-        query = self.query.clone(klass=Query)
-        query.bump_prefix()
-        query.extra = {}
-        query.select = []
-        query.add_fields([query.get_meta().pk.name])
-        # Recheck the count - it is possible that fiddling with the select
-        # fields above removes tables from the query. Refs #18304.
-        count = query.count_active_tables()
-        if not self.query.related_updates and count == 1:
-            return
-
-        must_pre_select = count > 1 and not self.connection.features.update_can_self_select
-
-        # Now we adjust the current query: reset the where clause and get rid
-        # of all the tables we don't need (since they're in the sub-select).
-        self.query.where = self.query.where_class()
-        if self.query.related_updates or must_pre_select:
-            # Either we're using the idents in multiple update queries (so
-            # don't want them to change), or the db backend doesn't support
-            # selecting from the updating table (e.g. MySQL).
-            idents = []
-            for rows in query.get_compiler(self.using).execute_sql(MULTI):
-                idents.extend([r[0] for r in rows])
-            self.query.add_filter(('pk__in', idents))
-            self.query.related_ids = idents
-        else:
-            # The fast path. Filters and updates in one query.
-            self.query.add_filter(('pk__in', query))
-        for alias in self.query.tables[1:]:
-            self.query.alias_refcount[alias] = 0
 
 class SQLAggregateCompiler(compiler.SQLAggregateCompiler, SQLCompiler):
     pass
 
 
 class SQLDateCompiler(compiler.SQLDateCompiler, SQLCompiler):
-    pass
+    as_sql = SQLCompiler.as_sql
 
 
 class SQLDateTimeCompiler(compiler.SQLDateTimeCompiler, SQLCompiler):
-    pass
+    as_sql = SQLCompiler.as_sql
 

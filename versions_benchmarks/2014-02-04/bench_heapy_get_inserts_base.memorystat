@@ -1,0 +1,12 @@
+Partition of a set of 25 objects. Total size = 3768 bytes.
+ Index  Count   %     Size   % Cumulative  % Kind (class / dict of class)
+     0      4  16     1120  30      1120  30 dict of guppy.etc.Glue.Interface
+     1      3  12      840  22      1960  52 dict (no owner)
+     2      1   4      464  12      2424  64 types.FrameType
+     3      1   4      280   7      2704  72 dict of guppy.etc.Glue.Owner
+     4      3  12      264   7      2968  79 __builtin__.weakref
+     5      4  16      256   7      3224  86 guppy.etc.Glue.Interface
+     6      3  12      240   6      3464  92 types.MethodType
+     7      4  16      208   6      3672  97 str
+     8      1   4       72   2      3744  99 guppy.etc.Glue.Owner
+     9      1   4       24   1      3768 100 int

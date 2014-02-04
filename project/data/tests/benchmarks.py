@@ -27,7 +27,8 @@ from pyprof2calltree import convert
 
 from .. import models
 from .utils import clear_tables, count_rows
-from ..settings import DATA_RESULTS_BENCHMARK_DIR
+from ..settings import DATA_RESULTS_BENCHMARK_DIR, DATA_RUN_BENCHMARKS_TYPES
+
 
 # !!!!!!!!!!!!!!!!!
 #TODO: batch_create using MISSING
@@ -314,7 +315,11 @@ class BenchmarkTest(TestCase):
 
         clear_tables('data_dataprimary')
         def get_inserts_base(min_base_time_benchmark=0.4):
-            print('MIN: %f' % min_base_time_benchmark)
+            """
+            The method estimates the number of inserts 
+            according to the declared time base.
+            """
+            #print('MIN: %f' % min_base_time_benchmark)
             insert_number = 0
             start = datetime.datetime.now()
             while 1:
@@ -326,26 +331,33 @@ class BenchmarkTest(TestCase):
                 time_delta = end - start
                 time_seconds = time_delta.total_seconds()
                 if time_seconds >= min_base_time_benchmark:
-                    print('%s %s %s %d' % (time_delta, start, end, insert_number))
+                    #print('%s %s %s %d' % (time_delta, start, end, insert_number))
                     break
             return insert_number
 
-        inserts_simple = get_inserts_base()
-        inserts_profile_pycallgraph = benchmark_profile_pycallgraph(get_inserts_base, 999999999)
-        inserts_cprofile = benchmark_cprofile(get_inserts_base, 999999999)
-        inserts_heapy = benchmark_heapy(get_inserts_base, 999999999)
+        if 'benchmark_simple_time' in DATA_RUN_BENCHMARKS_TYPES:
+            print('Benchmark simple')
+            inserts_simple = get_inserts_base()
+            self.run_benchmark_comparison(benchmark_simple_time, inserts_simple)
 
-        print('Benchmark simple')
-        self.run_benchmark_comparison(benchmark_simple_time, inserts_simple)
+        if 'benchmark_profile_pycallgraph' in DATA_RUN_BENCHMARKS_TYPES:
+            print('Benchmark pycallgraph')
+            inserts_profile_pycallgraph = benchmark_profile_pycallgraph(
+                get_inserts_base,
+                999999999)
+            self.run_benchmark_comparison(benchmark_profile_pycallgraph,
+                                          inserts_profile_pycallgraph)
 
-        print('Benchmark pycallgraph')
-        self.run_benchmark_comparison(benchmark_profile_pycallgraph, inserts_profile_pycallgraph)
+        if 'benchmark_cprofile' in DATA_RUN_BENCHMARKS_TYPES:
+            print('Benchmark cProfile')
+            inserts_cprofile = benchmark_cprofile(get_inserts_base, 999999999)
+            self.run_benchmark_comparison(benchmark_cprofile, inserts_cprofile)
 
-        print('Benchmark cProfile')
-        self.run_benchmark_comparison(benchmark_cprofile, inserts_cprofile)
+        if 'benchmark_heapy' in DATA_RUN_BENCHMARKS_TYPES:
+            print('Benchmark heapy')
+            inserts_heapy = benchmark_heapy(get_inserts_base, 999999999)
+            self.run_benchmark_comparison(benchmark_heapy, inserts_heapy)
 
-        print('Benchmark heapy')
-        self.run_benchmark_comparison(benchmark_heapy, inserts_heapy)
 
     def run_benchmark_comparison(self, benchmark, inserts):
 
@@ -355,7 +367,6 @@ class BenchmarkTest(TestCase):
         clear_tables('data_dataprimary')
         def object_create_speed_orm():
             insert_number = 0
-            start = datetime.datetime.now()
             while 1:
                 insert_number += 1
                 data_object = models.DataPrimary()
@@ -466,3 +477,71 @@ class BenchmarkTest(TestCase):
                         break
         benchmark(insert_batch_pycassa, INSERTS)
         self.assertEqual(INSERTS, count_rows(table_name))
+
+
+        clear_tables('select_cql')
+        INSERTS = INSERTS * 4
+        cursor = connection.cursor()
+        try:
+            cursor.execute(b'CREATE TABLE select_cql ( id1 int, id2 int, data int, PRIMARY KEY (id1, id2) )  ;')
+        except:
+            pass
+
+        insert_number = 0
+        while 1:
+            insert_number += 1
+            cql_query = \
+                b"INSERT INTO select_cql (id1, id2, data) VALUES (%d,%d,%d)" % (
+                    insert_number,
+                    insert_number,
+                    insert_number)
+            cursor.execute(cql_query)
+            if not insert_number % (INSERTS):
+                break
+
+        def select_cql_normal():
+            cursor.execute(b'SELECT * FROM select_cql')
+            out = cursor.fetchall()
+            for i in out:
+                pass
+        benchmark(select_cql_normal, INSERTS)
+
+        def select_cql_token():
+            cursor.execute(b'SELECT * FROM select_cql WHERE token(id1) > token(10)')
+            out = cursor.fetchall()
+            for i in out:
+                pass
+        benchmark(select_cql_token, INSERTS - 10)
+
+        def select_cql_filtering():
+            cursor.execute(b'SELECT * FROM select_cql WHERE id2 > 10 ALLOW FILTERING')
+            out = cursor.fetchall()
+            for i in out:
+                pass
+        benchmark(select_cql_filtering, INSERTS - 10)
+
+        clear_tables('data_dataprimary')
+        def fill_db_table():
+            cursor = connection.cursor()
+            insert_number = 0
+            while 1:
+                insert_number += 1
+                cursor.execute("INSERT INTO data_dataprimary (id, data) VALUES (%d,%d)" % (insert_number, insert_number))
+                if not insert_number % INSERTS:
+                    break
+        fill_db_table()
+        self.assertEqual(INSERTS, count_rows('data_dataprimary'))
+
+        def select_orm_all_values():
+            data = models.DataPrimary.objects.all().values()
+            for d in data:
+                id = d['id']
+                data = d['data']
+        benchmark(select_orm_all_values, INSERTS)
+
+        def select_orm_all_object():
+            data = models.DataPrimary.objects.all()
+            for d in data:
+                id = int(d.id)
+                data = int(d.data)
+        benchmark(select_orm_all_object, INSERTS)

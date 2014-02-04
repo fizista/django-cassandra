@@ -1,0 +1,13 @@
+Partition of a set of 656 objects. Total size = 226248 bytes.
+ Index  Count   %     Size   % Cumulative  % Kind (class / dict of class)
+     0      1   0    73216  32     73216  32 guppy.heapy.heapyc.NodeGraph
+     1    145  22    58264  26    131480  58 dict (no owner)
+     2     65  10    34328  15    165808  73 dict of guppy.etc.Glue.Interface
+     3     11   2    11528   5    177336  78 dict of guppy.etc.Glue.Share
+     4     35   5     9800   4    187136  83 dict of guppy.etc.Glue.Owner
+     5    131  20     7160   3    194296  86 str
+     6     65  10     4160   2    198456  88 guppy.etc.Glue.Interface
+     7     25   4     3400   2    201856  89 list
+     8     39   6     3120   1    204976  91 types.MethodType
+     9     35   5     2520   1    207496  92 guppy.etc.Glue.Owner
+<33 more rows. Type e.g. '_.more' to view.>

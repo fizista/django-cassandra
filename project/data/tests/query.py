@@ -38,7 +38,7 @@ class QueryTest(TestCase):
         'data_dataprimary']
 
     def setUp(self):
-        clear_tables(self.TABLES_IN_USE)
+        clear_tables(*self.TABLES_IN_USE)
 
     def tearDown(self):
         pass
@@ -102,8 +102,7 @@ class QueryTest(TestCase):
         cursor.execute("SELECT * FROM data_dataprimary")
         self.assertEqual(
             cursor.fetchall(),
-            [[1, 10],
-             [3, 999]]
+            [[1, 999], ]
         )
 
     def test_insert_bulk(self):
@@ -129,7 +128,7 @@ class QueryTest(TestCase):
              [3, 30]]
         )
 
-    def test_insert_bulk_multi_heavy(self):
+    def off_test_insert_bulk_multi_heavy(self):
         """
         Check here if there is no accident: rpc_timeout
         
@@ -192,12 +191,28 @@ class QueryTest(TestCase):
             models.DataPrimary.objects.all()[0])
 
         self.assertEqual(
-            [{b'data': 1, b'id': 1}, {b'data': 2, b'id': 2}, {b'data': 3, b'id': 3}][0],
-            models.DataPrimary.objects.all().values()[0])
+            [{b'data': 1, b'id': 1}, {b'data': 2, b'id': 2}, {b'data': 3, b'id': 3}],
+            list(models.DataPrimary.objects.all().values()))
 
+    def test_filter(self):
+
+        d1 = models.DataPrimary(id=1, data=1)
+        d1.save()
+        d2 = models.DataPrimary(2, 2)
+        d2.save()
+        d3 = models.DataPrimary(3, 3)
+        d3.save()
+
+        # test EQ
         self.assertEqual(
-            [{b'data': 1, b'id': 1}, {b'data': 2, b'id': 2}, {b'data': 3, b'id': 3}][2],
-            models.DataPrimary.objects.all().values()[2])
+            [{b'data': 2, b'id': 2}],
+            list(models.DataPrimary.objects.filter(pk=2).values()))
+
+        # test IN
+        self.assertEqual(
+            [{b'data': 1, b'id': 1}, {b'data': 3, b'id': 3}],
+            list(models.DataPrimary.objects.filter(pk__in=(1, 3)).values()))
+
 
     def test_fields(self):
 
@@ -212,6 +227,8 @@ class QueryTest(TestCase):
         datafields_object.char_field = 'abcdABCD'
         datafields_object.text_field = 'abcdABCD'
         datafields_object.save()
+
+        del datafields_object
 
         datafields_object_db = models.DataFields.objects.get(pk=primary_key)
 

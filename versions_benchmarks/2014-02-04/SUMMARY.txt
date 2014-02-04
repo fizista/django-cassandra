@@ -1,0 +1,66 @@
+Creating test database for alias 'default'...
+Benchmark simple
+Insert: 30335
+                 object_create_speed_orm     0.299 101000
+                              insert_orm    50.800    597
+                         insert_bulk_orm     3.280   9250
+                              insert_cql    27.200   1120
+                        insert_batch_cql     1.850  16400
+                          insert_pycassa    32.100    945
+                    insert_batch_pycassa     3.940   7700
+                       select_cql_normal     4.570  26600
+                        select_cql_token     4.270  28400
+                    select_cql_filtering     4.880  24900
+                   select_orm_all_values     4.850  25000
+                   select_orm_all_object     5.720  21200
+Benchmark pycallgraph
+                        get_inserts_base     0.829 1210000000
+Insert: 2308
+                 object_create_speed_orm     0.452   5110
+                              insert_orm    10.500    220
+                         insert_bulk_orm     1.640   1410
+                              insert_cql     5.250    440
+                        insert_batch_cql     0.226  10200
+                          insert_pycassa     5.660    408
+                    insert_batch_pycassa     1.330   1740
+                       select_cql_normal     2.380   3880
+                        select_cql_token     1.970   4680
+                    select_cql_filtering     2.250   4100
+                   select_orm_all_values     3.600   2560
+                   select_orm_all_object     4.800   1920
+Benchmark cProfile
+                        get_inserts_base     0.400 2500000000
+Insert: 8213
+                 object_create_speed_orm     0.346  23700
+                              insert_orm    19.000    432
+                         insert_bulk_orm     1.380   5950
+                              insert_cql    10.400    790
+                        insert_batch_cql     0.433  19000
+                          insert_pycassa    12.300    668
+                    insert_batch_pycassa     1.580   5200
+                       select_cql_normal     2.580  12700
+                        select_cql_token     2.250  14600
+                    select_cql_filtering     2.610  12600
+                   select_orm_all_values     3.000  11000
+                   select_orm_all_object     4.190   7840
+Benchmark heapy
+                        get_inserts_base     1.940 515000000
+Insert: 30441
+                 object_create_speed_orm     1.060  28700
+                              insert_orm    46.500    655
+                         insert_bulk_orm     3.020  10100
+                              insert_cql    29.300   1040
+                        insert_batch_cql     2.250  13500
+                          insert_pycassa    30.600    995
+                    insert_batch_pycassa     4.120   7390
+                       select_cql_normal     8.980  13600
+                        select_cql_token    13.500   9020
+                    select_cql_filtering    15.900   7660
+                   select_orm_all_values    15.300   7960
+                   select_orm_all_object    16.100   7560
+.
+----------------------------------------------------------------------
+Ran 1 test in 980.540s
+
+OK
+Destroying test database for alias 'default'...

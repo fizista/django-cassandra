@@ -21,7 +21,7 @@ settings.configure(
 from django.test.simple import DjangoTestSuiteRunner
 test_runner = DjangoTestSuiteRunner(verbosity=1)
 
-failures = test_runner.run_tests(['pbank', ])
+failures = test_runner.run_tests(['data', ])
 if failures:
     sys.exit(failures)
 

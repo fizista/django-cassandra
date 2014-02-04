@@ -29,12 +29,12 @@ class DatabaseCreation(BaseDatabaseCreation):
         'IPAddressField': 'inet',
         'GenericIPAddressField': 'inet',
         'NullBooleanField': 'boolean',
-        'PositiveIntegerField': 'int',
+        'PositiveIntegerField': 'bigint',
         'PositiveSmallIntegerField': 'int',
         'SlugField': 'varchar',
         'SmallIntegerField': 'int',
         'TextField': 'text',
-        'TimeField': 'timestamp',
+        'TimeField': 'bigint',
     }
 
     data_type_check_constraints = {

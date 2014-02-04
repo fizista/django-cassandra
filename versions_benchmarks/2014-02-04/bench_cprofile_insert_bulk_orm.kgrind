@@ -1,0 +1,1031 @@
+events: Ticks
+summary: 1375
+fn=__init__ /home/wojciech/.pyenv/versions/cassandra/lib/python2.7/site-packages/cql/cassandra/Cassandra.py:8534
+8534 0
+
+fn=pre_execution_setup /home/wojciech/.pyenv/versions/cassandra/lib/python2.7/site-packages/cql/cursor.py:57
+57 0
+cfn=__checksock /home/wojciech/.pyenv/versions/cassandra/lib/python2.7/site-packages/cql/cursor.py:195
+calls=1 195
+57 0
+
+fn=__init__ /home/wojciech/AptanaWorkspace/django_cassandra/django_cassandra/db/compiler.py:93
+93 0
+cfn=__init__ /home/wojciech/.pyenv/versions/cassandra/lib/python2.7/site-packages/django/db/models/sql/compiler.py:822
+calls=1 822
+93 0
+
+fn=<method 'read' of 'cStringIO.StringI' objects>
+0 0
+
+fn=readMessageEnd /home/wojciech/.pyenv/versions/cassandra/lib/python2.7/site-packages/thrift/protocol/TBinaryProtocol.py:145
+145 0
+
+fn=commit /home/wojciech/.pyenv/versions/cassandra/lib/python2.7/site-packages/django/db/backends/__init__.py:162
+162 0
+cfn=_commit /home/wojciech/.pyenv/versions/cassandra/lib/python2.7/site-packages/django/db/backends/__init__.py:133
+calls=1 133
+162 0
+cfn=validate_no_atomic_block /home/wojciech/.pyenv/versions/cassandra/lib/python2.7/site-packages/django/db/backends/__init__.py:354
+calls=1 354
+162 0
+cfn=set_clean /home/wojciech/.pyenv/versions/cassandra/lib/python2.7/site-packages/django/db/backends/__init__.py:394
+calls=1 394
+162 0
+cfn=validate_thread_sharing /home/wojciech/.pyenv/versions/cassandra/lib/python2.7/site-packages/django/db/backends/__init__.py:474
+calls=1 474
+162 0
+
+fn=read /home/wojciech/.pyenv/versions/cassandra/lib/python2.7/site-packages/cql/cassandra/Cassandra.py:8541
+8541 0
+cfn=<thrift.protocol.fastbinary.decode_binary>
+calls=1 0
+8541 0
+cfn=<isinstance>
+calls=1 0
+8541 0
+
+fn=<genexpr> /home/wojciech/AptanaWorkspace/django_cassandra/django_cassandra/db/compiler.py:130
+130 37
+cfn=<genexpr> /home/wojciech/AptanaWorkspace/django_cassandra/django_cassandra/db/compiler.py:111
+calls=8212 111
+130 8
+cfn=placeholder /home/wojciech/AptanaWorkspace/django_cassandra/django_cassandra/db/compiler.py:79
+calls=16426 79
+130 60
+cfn=<genexpr> /home/wojciech/AptanaWorkspace/django_cassandra/django_cassandra/db/compiler.py:110
+calls=8214 110
+130 11
+cfn=<zip>
+calls=8213 0
+130 227
+
+fn=__enter__ /home/wojciech/.pyenv/versions/cassandra/lib/python2.7/site-packages/django/db/transaction.py:230
+230 0
+cfn=get_autocommit /home/wojciech/.pyenv/versions/cassandra/lib/python2.7/site-packages/django/db/backends/__init__.py:320
+calls=1 320
+230 0
+cfn=get_connection /home/wojciech/.pyenv/versions/cassandra/lib/python2.7/site-packages/django/db/transaction.py:35
+calls=1 35
+230 0
+cfn=set_autocommit /home/wojciech/.pyenv/versions/cassandra/lib/python2.7/site-packages/django/db/backends/__init__.py:327
+calls=1 327
+230 0
+
+fn=<genexpr> /home/wojciech/AptanaWorkspace/django_cassandra/django_cassandra/db/compiler.py:136
+136 36
+cfn=<genexpr> /home/wojciech/AptanaWorkspace/django_cassandra/django_cassandra/db/compiler.py:130
+calls=8214 130
+136 285
+cfn=<genexpr> /home/wojciech/AptanaWorkspace/django_cassandra/django_cassandra/db/compiler.py:111
+calls=1 111
+136 0
+cfn=<method 'join' of 'str' objects>
+calls=16426 0
+136 155
+
+fn=<method 'encode' of 'unicode' objects>
+0 0
+
+fn=items /home/wojciech/.pyenv/versions/cassandra/lib/python2.7/site-packages/django/utils/datastructures.py:202
+202 0
+
+fn=has_default /home/wojciech/.pyenv/versions/cassandra/lib/python2.7/site-packages/django/db/models/fields/__init__.py:429
+429 17
+
+fn=commit /home/wojciech/.pyenv/versions/cassandra/lib/python2.7/site-packages/cql/connection.py:83
+83 0
+
+fn=<any>
+0 0
+cfn=<genexpr> /home/wojciech/AptanaWorkspace/django_cassandra/django_cassandra/db/compiler.py:123
+calls=3 123
+0 0
+
+fn=cstringio_buf /home/wojciech/.pyenv/versions/cassandra/lib/python2.7/site-packages/thrift/transport/TTransport.py:296
+296 0
+
+fn=as_sql /home/wojciech/AptanaWorkspace/django_cassandra/django_cassandra/db/compiler.py:99
+99 9
+cfn=<genexpr> /home/wojciech/AptanaWorkspace/django_cassandra/django_cassandra/db/compiler.py:136
+calls=8214 136
+99 476
+cfn=<any>
+calls=1 0
+99 0
+cfn=get_meta /home/wojciech/.pyenv/versions/cassandra/lib/python2.7/site-packages/django/db/models/sql/query.py:205
+calls=1 205
+99 0
+cfn=<method 'join' of 'str' objects>
+calls=2 0
+99 1
+
+fn=write /home/wojciech/.pyenv/versions/cassandra/lib/python2.7/site-packages/thrift/transport/TTransport.py:279
+279 0
+cfn=<method 'write' of 'cStringIO.StringO' objects>
+calls=5 0
+279 0
+
+fn=_get_pk_val /home/wojciech/.pyenv/versions/cassandra/lib/python2.7/site-packages/django/db/models/base.py:462
+462 18
+cfn=<getattr>
+calls=8213 0
+462 7
+
+fn=get_autocommit /home/wojciech/.pyenv/versions/cassandra/lib/python2.7/site-packages/django/db/backends/__init__.py:320
+320 0
+cfn=ensure_connection /home/wojciech/.pyenv/versions/cassandra/lib/python2.7/site-packages/django/db/backends/__init__.py:118
+calls=3 118
+320 0
+
+fn=get_db_prep_save /home/wojciech/.pyenv/versions/cassandra/lib/python2.7/site-packages/django/db/models/fields/__init__.py:345
+345 35
+cfn=get_db_prep_value /home/wojciech/.pyenv/versions/cassandra/lib/python2.7/site-packages/django/db/models/fields/__init__.py:334
+calls=16426 334
+345 52
+
+fn=__checksock /home/wojciech/.pyenv/versions/cassandra/lib/python2.7/site-packages/cql/cursor.py:195
+195 0
+
+fn=<method 'extend' of 'list' objects>
+0 0
+
+fn=write /home/wojciech/.pyenv/versions/cassandra/lib/python2.7/site-packages/cql/cassandra/Cassandra.py:8475
+8475 0
+cfn=write /home/wojciech/.pyenv/versions/cassandra/lib/python2.7/site-packages/thrift/transport/TTransport.py:279
+calls=1 279
+8475 0
+cfn=<thrift.protocol.fastbinary.encode_binary>
+calls=1 0
+8475 0
+
+fn=get_connection /home/wojciech/.pyenv/versions/cassandra/lib/python2.7/site-packages/django/db/transaction.py:35
+35 0
+cfn=__getitem__ /home/wojciech/.pyenv/versions/cassandra/lib/python2.7/site-packages/django/db/utils.py:192
+calls=3 192
+35 0
+
+fn=<setattr>
+0 16
+
+fn=writeString /home/wojciech/.pyenv/versions/cassandra/lib/python2.7/site-packages/thrift/protocol/TBinaryProtocol.py:121
+121 0
+cfn=write /home/wojciech/.pyenv/versions/cassandra/lib/python2.7/site-packages/thrift/transport/TTransport.py:279
+calls=1 279
+121 0
+cfn=writeI32 /home/wojciech/.pyenv/versions/cassandra/lib/python2.7/site-packages/thrift/protocol/TBinaryProtocol.py:109
+calls=1 109
+121 0
+cfn=<len>
+calls=1 0
+121 0
+
+fn=__init__ /home/wojciech/.pyenv/versions/cassandra/lib/python2.7/site-packages/cql/cassandra/ttypes.py:3383
+3383 0
+
+fn=<range>
+0 0
+
+fn=<method 'getvalue' of 'cStringIO.StringO' objects>
+0 0
+
+fn=<method 'split' of '_sre.SRE_Pattern' objects>
+0 12
+
+fn=compress_query_text /home/wojciech/.pyenv/versions/cassandra/lib/python2.7/site-packages/cql/thrifteries.py:44
+44 0
+cfn=<getattr>
+calls=1 0
+44 0
+
+fn=set_autocommit /home/wojciech/.pyenv/versions/cassandra/lib/python2.7/site-packages/django/db/backends/__init__.py:327
+327 0
+cfn=validate_no_atomic_block /home/wojciech/.pyenv/versions/cassandra/lib/python2.7/site-packages/django/db/backends/__init__.py:354
+calls=2 354
+327 0
+cfn=_set_autocommit /home/wojciech/AptanaWorkspace/django_cassandra/django_cassandra/db/base.py:129
+calls=2 129
+327 0
+cfn=ensure_connection /home/wojciech/.pyenv/versions/cassandra/lib/python2.7/site-packages/django/db/backends/__init__.py:118
+calls=2 118
+327 0
+
+fn=commit_on_success_unless_managed /home/wojciech/.pyenv/versions/cassandra/lib/python2.7/site-packages/django/db/transaction.py:488
+488 0
+cfn=get_autocommit /home/wojciech/.pyenv/versions/cassandra/lib/python2.7/site-packages/django/db/backends/__init__.py:320
+calls=1 320
+488 0
+cfn=get_connection /home/wojciech/.pyenv/versions/cassandra/lib/python2.7/site-packages/django/db/transaction.py:35
+calls=1 35
+488 0
+cfn=atomic /home/wojciech/.pyenv/versions/cassandra/lib/python2.7/site-packages/django/db/transaction.py:343
+calls=1 343
+488 0
+
+fn=send /home/wojciech/.pyenv/versions/cassandra/lib/python2.7/site-packages/django/dispatch/dispatcher.py:162
+162 17
+
+fn=<thread.get_ident>
+0 0
+
+fn=<built-in method __new__ of type object at 0x7801e0>
+0 0
+
+fn=readI32 /home/wojciech/.pyenv/versions/cassandra/lib/python2.7/site-packages/thrift/protocol/TBinaryProtocol.py:205
+205 0
+cfn=readAll /home/wojciech/.pyenv/versions/cassandra/lib/python2.7/site-packages/thrift/transport/TTransport.py:54
+calls=3 54
+205 346
+cfn=<_struct.unpack>
+calls=3 0
+205 0
+
+fn=_commit /home/wojciech/.pyenv/versions/cassandra/lib/python2.7/site-packages/django/db/backends/__init__.py:133
+133 0
+cfn=commit /home/wojciech/.pyenv/versions/cassandra/lib/python2.7/site-packages/cql/connection.py:83
+calls=1 83
+133 0
+cfn=__exit__ /home/wojciech/.pyenv/versions/cassandra/lib/python2.7/site-packages/django/db/utils.py:72
+calls=1 72
+133 0
+cfn=__enter__ /home/wojciech/.pyenv/versions/cassandra/lib/python2.7/site-packages/django/db/utils.py:69
+calls=1 69
+133 0
+
+fn=__init__ /home/wojciech/.pyenv/versions/cassandra/lib/python2.7/site-packages/django/db/models/sql/compiler.py:822
+822 0
+cfn=__init__ /home/wojciech/.pyenv/versions/cassandra/lib/python2.7/site-packages/django/db/models/sql/compiler.py:20
+calls=1 20
+822 0
+
+fn=insert_values /home/wojciech/.pyenv/versions/cassandra/lib/python2.7/site-packages/django/db/models/sql/subqueries.py:198
+198 34
+cfn=<getattr>
+calls=16426 0
+198 16
+cfn=<isinstance>
+calls=16426 0
+198 16
+
+fn=pre_save /home/wojciech/.pyenv/versions/cassandra/lib/python2.7/site-packages/django/db/models/fields/__init__.py:322
+322 32
+cfn=<getattr>
+calls=16426 0
+322 17
+
+fn=execute_sql /home/wojciech/AptanaWorkspace/django_cassandra/django_cassandra/db/compiler.py:151
+151 0
+cfn=as_sql /home/wojciech/AptanaWorkspace/django_cassandra/django_cassandra/db/compiler.py:99
+calls=1 99
+151 487
+cfn=cursor /home/wojciech/.pyenv/versions/cassandra/lib/python2.7/site-packages/django/db/backends/__init__.py:150
+calls=1 150
+151 0
+cfn=execute /home/wojciech/.pyenv/versions/cassandra/lib/python2.7/site-packages/django/db/backends/util.py:46
+calls=1 46
+151 380
+
+fn=<thrift.protocol.fastbinary.decode_binary>
+0 0
+cfn=cstringio_buf /home/wojciech/.pyenv/versions/cassandra/lib/python2.7/site-packages/thrift/transport/TTransport.py:296
+calls=1 296
+0 0
+cfn=__init__ /home/wojciech/.pyenv/versions/cassandra/lib/python2.7/site-packages/cql/cassandra/ttypes.py:3383
+calls=1 3383
+0 0
+
+fn=__init__ /home/wojciech/.pyenv/versions/cassandra/lib/python2.7/site-packages/django/db/models/sql/compiler.py:20
+20 0
+
+fn=__init__ /home/wojciech/.pyenv/versions/cassandra/lib/python2.7/site-packages/django/utils/tree.py:18
+18 0
+
+fn=__init__ /home/wojciech/.pyenv/versions/cassandra/lib/python2.7/site-packages/cql/cassandra/Cassandra.py:8441
+8441 0
+
+fn=__init__ /home/wojciech/.pyenv/versions/cassandra/lib/python2.7/site-packages/django/db/models/query.py:34
+34 0
+cfn=__init__ /home/wojciech/.pyenv/versions/cassandra/lib/python2.7/site-packages/django/db/models/sql/query.py:105
+calls=1 105
+34 0
+
+fn=flush /home/wojciech/.pyenv/versions/cassandra/lib/python2.7/site-packages/thrift/transport/TSocket.py:135
+135 0
+
+fn=create_cursor /home/wojciech/AptanaWorkspace/django_cassandra/django_cassandra/db/base.py:112
+112 0
+cfn=cursor /home/wojciech/.pyenv/versions/cassandra/lib/python2.7/site-packages/cql/connection.py:93
+calls=1 93
+112 0
+
+fn=<_struct.pack>
+0 0
+
+fn=<max>
+0 0
+
+fn=validate_no_atomic_block /home/wojciech/.pyenv/versions/cassandra/lib/python2.7/site-packages/django/db/backends/__init__.py:354
+354 0
+
+fn=get_queryset /home/wojciech/.pyenv/versions/cassandra/lib/python2.7/site-packages/django/db/models/manager.py:123
+123 0
+cfn=__init__ /home/wojciech/.pyenv/versions/cassandra/lib/python2.7/site-packages/django/db/models/query.py:34
+calls=1 34
+123 0
+
+fn=_cursor /home/wojciech/.pyenv/versions/cassandra/lib/python2.7/site-packages/django/db/backends/__init__.py:128
+128 0
+cfn=create_cursor /home/wojciech/AptanaWorkspace/django_cassandra/django_cassandra/db/base.py:112
+calls=1 112
+128 0
+cfn=__exit__ /home/wojciech/.pyenv/versions/cassandra/lib/python2.7/site-packages/django/db/utils.py:72
+calls=1 72
+128 0
+cfn=__enter__ /home/wojciech/.pyenv/versions/cassandra/lib/python2.7/site-packages/django/db/utils.py:69
+calls=1 69
+128 0
+cfn=ensure_connection /home/wojciech/.pyenv/versions/cassandra/lib/python2.7/site-packages/django/db/backends/__init__.py:118
+calls=1 118
+128 0
+
+fn=<cStringIO.StringIO>
+0 0
+
+fn=readMessageBegin /home/wojciech/.pyenv/versions/cassandra/lib/python2.7/site-packages/thrift/protocol/TBinaryProtocol.py:125
+125 0
+cfn=readI32 /home/wojciech/.pyenv/versions/cassandra/lib/python2.7/site-packages/thrift/protocol/TBinaryProtocol.py:205
+calls=2 205
+125 346
+cfn=readString /home/wojciech/.pyenv/versions/cassandra/lib/python2.7/site-packages/thrift/protocol/TBinaryProtocol.py:220
+calls=1 220
+125 0
+
+fn=<iter>
+0 8
+
+fn=replace_param_substitutions /home/wojciech/.pyenv/versions/cassandra/lib/python2.7/site-packages/cql/query.py:32
+32 0
+cfn=<method 'extend' of 'list' objects>
+calls=1 0
+32 0
+cfn=<method 'split' of '_sre.SRE_Pattern' objects>
+calls=2 0
+32 12
+cfn=<method 'sub' of '_sre.SRE_Pattern' objects>
+calls=1 0
+32 16
+cfn=<method 'append' of 'list' objects>
+calls=1 0
+32 0
+cfn=<method 'join' of 'str' objects>
+calls=1 0
+32 0
+
+fn=<method 'get' of 'dictproxy' objects>
+0 21
+
+fn=__exit__ /home/wojciech/.pyenv/versions/cassandra/lib/python2.7/site-packages/django/db/utils.py:72
+72 0
+
+fn=__init__ /home/wojciech/.pyenv/versions/cassandra/lib/python2.7/site-packages/django/db/backends/util.py:18
+18 0
+
+fn=insert_query /home/wojciech/.pyenv/versions/cassandra/lib/python2.7/site-packages/django/db/models/query.py:1503
+1503 0
+cfn=insert_values /home/wojciech/.pyenv/versions/cassandra/lib/python2.7/site-packages/django/db/models/sql/subqueries.py:198
+calls=1 198
+1503 67
+cfn=execute_sql /home/wojciech/AptanaWorkspace/django_cassandra/django_cassandra/db/compiler.py:151
+calls=1 151
+1503 868
+cfn=__init__ /home/wojciech/.pyenv/versions/cassandra/lib/python2.7/site-packages/django/db/models/sql/subqueries.py:184
+calls=1 184
+1503 0
+cfn=get_compiler /home/wojciech/.pyenv/versions/cassandra/lib/python2.7/site-packages/django/db/models/sql/query.py:193
+calls=1 193
+1503 0
+
+fn=cursor /home/wojciech/.pyenv/versions/cassandra/lib/python2.7/site-packages/django/db/backends/__init__.py:150
+150 0
+cfn=_cursor /home/wojciech/.pyenv/versions/cassandra/lib/python2.7/site-packages/django/db/backends/__init__.py:128
+calls=1 128
+150 0
+cfn=__init__ /home/wojciech/.pyenv/versions/cassandra/lib/python2.7/site-packages/django/db/backends/util.py:18
+calls=1 18
+150 0
+cfn=__getattr__ /home/wojciech/.pyenv/versions/cassandra/lib/python2.7/site-packages/django/conf/__init__.py:52
+calls=1 52
+150 0
+cfn=validate_thread_sharing /home/wojciech/.pyenv/versions/cassandra/lib/python2.7/site-packages/django/db/backends/__init__.py:474
+calls=1 474
+150 0
+
+fn=set_dirty /home/wojciech/.pyenv/versions/cassandra/lib/python2.7/site-packages/django/db/backends/__init__.py:385
+385 0
+cfn=get_autocommit /home/wojciech/.pyenv/versions/cassandra/lib/python2.7/site-packages/django/db/backends/__init__.py:320
+calls=1 320
+385 0
+
+fn=handle_cql_execution_errors /home/wojciech/.pyenv/versions/cassandra/lib/python2.7/site-packages/cql/thrifteries.py:94
+94 0
+cfn=execute_cql3_query /home/wojciech/.pyenv/versions/cassandra/lib/python2.7/site-packages/cql/cassandra/Cassandra.py:1775
+calls=1 1775
+94 350
+
+fn=set_clean /home/wojciech/.pyenv/versions/cassandra/lib/python2.7/site-packages/django/db/backends/__init__.py:394
+394 0
+cfn=clean_savepoints /home/wojciech/.pyenv/versions/cassandra/lib/python2.7/site-packages/django/db/backends/__init__.py:251
+calls=1 251
+394 0
+
+fn=bulk_batch_size /home/wojciech/.pyenv/versions/cassandra/lib/python2.7/site-packages/django/db/backends/__init__.py:701
+701 0
+cfn=<len>
+calls=1 0
+701 0
+
+fn=bulk_create /home/wojciech/.pyenv/versions/cassandra/lib/python2.7/site-packages/django/db/models/manager.py:159
+159 0
+cfn=get_queryset /home/wojciech/.pyenv/versions/cassandra/lib/python2.7/site-packages/django/db/models/manager.py:123
+calls=1 123
+159 0
+cfn=bulk_create /home/wojciech/.pyenv/versions/cassandra/lib/python2.7/site-packages/django/db/models/query.py:322
+calls=1 322
+159 1005
+
+fn=validate_no_broken_transaction /home/wojciech/.pyenv/versions/cassandra/lib/python2.7/site-packages/django/db/backends/__init__.py:362
+362 0
+
+fn=execute /home/wojciech/.pyenv/versions/cassandra/lib/python2.7/site-packages/cql/cursor.py:72
+72 0
+cfn=pre_execution_setup /home/wojciech/.pyenv/versions/cassandra/lib/python2.7/site-packages/cql/cursor.py:57
+calls=1 57
+72 0
+cfn=get_response /home/wojciech/.pyenv/versions/cassandra/lib/python2.7/site-packages/cql/thrifteries.py:72
+calls=1 72
+72 350
+cfn=prepare_inline /home/wojciech/.pyenv/versions/cassandra/lib/python2.7/site-packages/cql/cursor.py:65
+calls=1 65
+72 29
+cfn=<isinstance>
+calls=1 0
+72 0
+cfn=process_execution_results /home/wojciech/.pyenv/versions/cassandra/lib/python2.7/site-packages/cql/thrifteries.py:109
+calls=1 109
+72 0
+
+fn=cursor /home/wojciech/.pyenv/versions/cassandra/lib/python2.7/site-packages/cql/connection.py:93
+93 0
+cfn=__init__ /home/wojciech/.pyenv/versions/cassandra/lib/python2.7/site-packages/cql/thrifteries.py:34
+calls=1 34
+93 0
+
+fn=<callable>
+0 0
+
+fn=execute /home/wojciech/AptanaWorkspace/django_cassandra/django_cassandra/db/patch.py:67
+67 0
+cfn=<method 'encode' of 'unicode' objects>
+calls=1 0
+67 0
+cfn=execute /home/wojciech/.pyenv/versions/cassandra/lib/python2.7/site-packages/cql/cursor.py:72
+calls=1 72
+67 379
+cfn=<isinstance>
+calls=1 0
+67 0
+
+fn=writeMessageEnd /home/wojciech/.pyenv/versions/cassandra/lib/python2.7/site-packages/thrift/protocol/TBinaryProtocol.py:54
+54 0
+
+fn=_aggregate_select /home/wojciech/.pyenv/versions/cassandra/lib/python2.7/site-packages/django/db/models/sql/query.py:1771
+1771 0
+
+fn=__get__ /home/wojciech/.pyenv/versions/cassandra/lib/python2.7/site-packages/django/db/models/manager.py:247
+247 0
+
+fn=__init__ /home/wojciech/.pyenv/versions/cassandra/lib/python2.7/site-packages/django/db/models/base.py:314
+314 9
+
+fn=__getattr__ /home/wojciech/.pyenv/versions/cassandra/lib/python2.7/site-packages/django/conf/__init__.py:52
+52 0
+cfn=<getattr>
+calls=1 0
+52 0
+
+fn=__enter__ /home/wojciech/.pyenv/versions/cassandra/lib/python2.7/site-packages/django/db/utils.py:69
+69 0
+
+fn=__init__ /home/wojciech/.pyenv/versions/cassandra/lib/python2.7/site-packages/django/utils/datastructures.py:127
+127 0
+
+fn=get_db_prep_value /home/wojciech/.pyenv/versions/cassandra/lib/python2.7/site-packages/django/db/models/fields/__init__.py:334
+334 33
+cfn=get_prep_value /home/wojciech/.pyenv/versions/cassandra/lib/python2.7/site-packages/django/db/models/fields/__init__.py:1070
+calls=16426 1070
+334 18
+
+fn=<method 'sub' of '_sre.SRE_Pattern' objects>
+0 16
+
+fn=get_prep_value /home/wojciech/.pyenv/versions/cassandra/lib/python2.7/site-packages/django/db/models/fields/__init__.py:1070
+1070 18
+
+fn=compiler /home/wojciech/.pyenv/versions/cassandra/lib/python2.7/site-packages/django/db/backends/__init__.py:924
+924 0
+cfn=<getattr>
+calls=1 0
+924 0
+
+fn=writeI32 /home/wojciech/.pyenv/versions/cassandra/lib/python2.7/site-packages/thrift/protocol/TBinaryProtocol.py:109
+109 0
+cfn=write /home/wojciech/.pyenv/versions/cassandra/lib/python2.7/site-packages/thrift/transport/TTransport.py:279
+calls=3 279
+109 0
+cfn=<_struct.pack>
+calls=3 0
+109 0
+
+fn=write /home/wojciech/.pyenv/versions/cassandra/lib/python2.7/site-packages/thrift/transport/TSocket.py:121
+121 0
+cfn=<len>
+calls=1 0
+121 0
+cfn=<method 'send' of '_socket.socket' objects>
+calls=1 0
+121 2
+
+fn=<genexpr> /home/wojciech/AptanaWorkspace/django_cassandra/django_cassandra/db/compiler.py:106
+106 0
+
+fn=recv_execute_cql3_query /home/wojciech/.pyenv/versions/cassandra/lib/python2.7/site-packages/cql/cassandra/Cassandra.py:1795
+1795 0
+cfn=__init__ /home/wojciech/.pyenv/versions/cassandra/lib/python2.7/site-packages/cql/cassandra/Cassandra.py:8534
+calls=1 8534
+1795 0
+cfn=readMessageEnd /home/wojciech/.pyenv/versions/cassandra/lib/python2.7/site-packages/thrift/protocol/TBinaryProtocol.py:145
+calls=1 145
+1795 0
+cfn=read /home/wojciech/.pyenv/versions/cassandra/lib/python2.7/site-packages/cql/cassandra/Cassandra.py:8541
+calls=1 8541
+1795 0
+cfn=readMessageBegin /home/wojciech/.pyenv/versions/cassandra/lib/python2.7/site-packages/thrift/protocol/TBinaryProtocol.py:125
+calls=1 125
+1795 346
+
+fn=<hasattr>
+0 0
+
+fn=<genexpr> /home/wojciech/AptanaWorkspace/django_cassandra/django_cassandra/db/compiler.py:111
+111 65
+cfn=get_db_prep_save /home/wojciech/.pyenv/versions/cassandra/lib/python2.7/site-packages/django/db/models/fields/__init__.py:345
+calls=16426 345
+111 88
+cfn=pre_save /home/wojciech/.pyenv/versions/cassandra/lib/python2.7/site-packages/django/db/models/fields/__init__.py:322
+calls=16426 322
+111 49
+
+fn=get_response /home/wojciech/.pyenv/versions/cassandra/lib/python2.7/site-packages/cql/thrifteries.py:72
+72 0
+cfn=compress_query_text /home/wojciech/.pyenv/versions/cassandra/lib/python2.7/site-packages/cql/thrifteries.py:44
+calls=1 44
+72 0
+cfn=handle_cql_execution_errors /home/wojciech/.pyenv/versions/cassandra/lib/python2.7/site-packages/cql/thrifteries.py:94
+calls=1 94
+72 350
+cfn=<getattr>
+calls=1 0
+72 0
+
+fn=__init__ /home/wojciech/.pyenv/versions/cassandra/lib/python2.7/site-packages/cql/thrifteries.py:34
+34 0
+cfn=<hasattr>
+calls=1 0
+34 0
+cfn=__init__ /home/wojciech/.pyenv/versions/cassandra/lib/python2.7/site-packages/cql/cursor.py:30
+calls=1 30
+34 0
+
+fn=insert_bulk_orm /home/wojciech/AptanaWorkspace/django_cassandra/project/data/tests/benchmarks.py:394
+394 24
+cfn=bulk_create /home/wojciech/.pyenv/versions/cassandra/lib/python2.7/site-packages/django/db/models/manager.py:159
+calls=1 159
+394 1006
+cfn=__get__ /home/wojciech/.pyenv/versions/cassandra/lib/python2.7/site-packages/django/db/models/manager.py:247
+calls=1 247
+394 0
+cfn=<method 'append' of 'list' objects>
+calls=8213 0
+394 7
+cfn=__init__ /home/wojciech/.pyenv/versions/cassandra/lib/python2.7/site-packages/django/db/models/base.py:325
+calls=8213 325
+394 337
+
+fn=partition /home/wojciech/.pyenv/versions/cassandra/lib/python2.7/site-packages/django/utils/functional.py:385
+385 17
+cfn=<method 'append' of 'list' objects>
+calls=8213 0
+385 7
+cfn=<lambda> /home/wojciech/.pyenv/versions/cassandra/lib/python2.7/site-packages/django/db/models/query.py:351
+calls=8213 351
+385 43
+
+fn=<method 'write' of 'cStringIO.StringO' objects>
+0 0
+
+fn=readString /home/wojciech/.pyenv/versions/cassandra/lib/python2.7/site-packages/thrift/protocol/TBinaryProtocol.py:220
+220 0
+cfn=readI32 /home/wojciech/.pyenv/versions/cassandra/lib/python2.7/site-packages/thrift/protocol/TBinaryProtocol.py:205
+calls=1 205
+220 0
+cfn=readAll /home/wojciech/.pyenv/versions/cassandra/lib/python2.7/site-packages/thrift/transport/TTransport.py:54
+calls=1 54
+220 0
+
+fn=<method 'append' of 'list' objects>
+0 15
+
+fn=execute_cql3_query /home/wojciech/.pyenv/versions/cassandra/lib/python2.7/site-packages/cql/cassandra/Cassandra.py:1775
+1775 0
+cfn=recv_execute_cql3_query /home/wojciech/.pyenv/versions/cassandra/lib/python2.7/site-packages/cql/cassandra/Cassandra.py:1795
+calls=1 1795
+1775 346
+cfn=send_execute_cql3_query /home/wojciech/.pyenv/versions/cassandra/lib/python2.7/site-packages/cql/cassandra/Cassandra.py:1785
+calls=1 1785
+1775 3
+
+fn=flush /home/wojciech/.pyenv/versions/cassandra/lib/python2.7/site-packages/thrift/transport/TTransport.py:282
+282 0
+cfn=<method 'getvalue' of 'cStringIO.StringO' objects>
+calls=1 0
+282 0
+cfn=flush /home/wojciech/.pyenv/versions/cassandra/lib/python2.7/site-packages/thrift/transport/TSocket.py:135
+calls=1 135
+282 0
+cfn=<_struct.pack>
+calls=1 0
+282 0
+cfn=<cStringIO.StringIO>
+calls=1 0
+282 0
+cfn=write /home/wojciech/.pyenv/versions/cassandra/lib/python2.7/site-packages/thrift/transport/TSocket.py:121
+calls=1 121
+282 2
+cfn=<len>
+calls=1 0
+282 0
+
+fn=db /home/wojciech/.pyenv/versions/cassandra/lib/python2.7/site-packages/django/db/models/query.py:812
+812 0
+cfn=_route_db /home/wojciech/.pyenv/versions/cassandra/lib/python2.7/site-packages/django/db/utils.py:237
+calls=4 237
+812 0
+
+fn=_route_db /home/wojciech/.pyenv/versions/cassandra/lib/python2.7/site-packages/django/db/utils.py:237
+237 0
+
+fn=validate_thread_sharing /home/wojciech/.pyenv/versions/cassandra/lib/python2.7/site-packages/django/db/backends/__init__.py:474
+474 0
+cfn=<thread.get_ident>
+calls=2 0
+474 0
+
+fn=<method 'recv' of '_socket.socket' objects>
+0 346
+
+fn=prepare_inline /home/wojciech/.pyenv/versions/cassandra/lib/python2.7/site-packages/cql/query.py:62
+62 0
+cfn=replace_param_substitutions /home/wojciech/.pyenv/versions/cassandra/lib/python2.7/site-packages/cql/query.py:32
+calls=1 32
+62 29
+
+fn=get_meta /home/wojciech/.pyenv/versions/cassandra/lib/python2.7/site-packages/django/db/models/sql/query.py:205
+205 0
+
+fn=__init__ /home/wojciech/.pyenv/versions/cassandra/lib/python2.7/site-packages/django/db/models/sql/subqueries.py:184
+184 0
+cfn=__init__ /home/wojciech/.pyenv/versions/cassandra/lib/python2.7/site-packages/django/db/models/sql/query.py:105
+calls=1 105
+184 0
+
+fn=get_compiler /home/wojciech/.pyenv/versions/cassandra/lib/python2.7/site-packages/django/db/models/sql/query.py:193
+193 0
+cfn=__init__ /home/wojciech/AptanaWorkspace/django_cassandra/django_cassandra/db/compiler.py:93
+calls=1 93
+193 0
+cfn=items /home/wojciech/.pyenv/versions/cassandra/lib/python2.7/site-packages/django/utils/datastructures.py:202
+calls=1 202
+193 0
+cfn=_aggregate_select /home/wojciech/.pyenv/versions/cassandra/lib/python2.7/site-packages/django/db/models/sql/query.py:1771
+calls=1 1771
+193 0
+cfn=compiler /home/wojciech/.pyenv/versions/cassandra/lib/python2.7/site-packages/django/db/backends/__init__.py:924
+calls=1 924
+193 0
+cfn=__getitem__ /home/wojciech/.pyenv/versions/cassandra/lib/python2.7/site-packages/django/db/utils.py:192
+calls=1 192
+193 0
+
+fn=prepare_inline /home/wojciech/.pyenv/versions/cassandra/lib/python2.7/site-packages/cql/cursor.py:65
+65 0
+cfn=prepare_inline /home/wojciech/.pyenv/versions/cassandra/lib/python2.7/site-packages/cql/query.py:62
+calls=1 62
+65 29
+
+fn=__exit__ /home/wojciech/.pyenv/versions/cassandra/lib/python2.7/site-packages/django/db/transaction.py:283
+283 0
+cfn=commit /home/wojciech/.pyenv/versions/cassandra/lib/python2.7/site-packages/django/db/backends/__init__.py:162
+calls=1 162
+283 0
+cfn=get_connection /home/wojciech/.pyenv/versions/cassandra/lib/python2.7/site-packages/django/db/transaction.py:35
+calls=1 35
+283 0
+cfn=set_autocommit /home/wojciech/.pyenv/versions/cassandra/lib/python2.7/site-packages/django/db/backends/__init__.py:327
+calls=1 327
+283 0
+
+fn=placeholder /home/wojciech/AptanaWorkspace/django_cassandra/django_cassandra/db/compiler.py:79
+79 41
+cfn=<isinstance>
+calls=16426 0
+79 19
+
+fn=<getattr>
+0 41
+
+fn=readFrame /home/wojciech/.pyenv/versions/cassandra/lib/python2.7/site-packages/thrift/transport/TTransport.py:274
+274 0
+cfn=<cStringIO.StringIO>
+calls=1 0
+274 0
+cfn=readAll /home/wojciech/.pyenv/versions/cassandra/lib/python2.7/site-packages/thrift/transport/TTransport.py:54
+calls=2 54
+274 346
+cfn=<_struct.unpack>
+calls=1 0
+274 0
+
+fn=__new__ /home/wojciech/.pyenv/versions/cassandra/lib/python2.7/site-packages/django/utils/datastructures.py:122
+122 0
+cfn=<built-in method __new__ of type object at 0x7801e0>
+calls=4 0
+122 0
+
+fn=__init__ /home/wojciech/.pyenv/versions/cassandra/lib/python2.7/site-packages/django/db/transaction.py:226
+226 0
+
+fn=bulk_create /home/wojciech/.pyenv/versions/cassandra/lib/python2.7/site-packages/django/db/models/query.py:322
+322 0
+cfn=__enter__ /home/wojciech/.pyenv/versions/cassandra/lib/python2.7/site-packages/django/db/transaction.py:230
+calls=1 230
+322 0
+cfn=commit_on_success_unless_managed /home/wojciech/.pyenv/versions/cassandra/lib/python2.7/site-packages/django/db/transaction.py:488
+calls=1 488
+322 0
+cfn=partition /home/wojciech/.pyenv/versions/cassandra/lib/python2.7/site-packages/django/utils/functional.py:385
+calls=1 385
+322 68
+cfn=db /home/wojciech/.pyenv/versions/cassandra/lib/python2.7/site-packages/django/db/models/query.py:812
+calls=2 812
+322 0
+cfn=__exit__ /home/wojciech/.pyenv/versions/cassandra/lib/python2.7/site-packages/django/db/transaction.py:283
+calls=1 283
+322 0
+cfn=__getitem__ /home/wojciech/.pyenv/versions/cassandra/lib/python2.7/site-packages/django/db/utils.py:192
+calls=1 192
+322 0
+cfn=_batched_insert /home/wojciech/.pyenv/versions/cassandra/lib/python2.7/site-packages/django/db/models/query.py:822
+calls=1 822
+322 936
+
+fn=__getitem__ /home/wojciech/.pyenv/versions/cassandra/lib/python2.7/site-packages/django/db/utils.py:192
+192 0
+cfn=<hasattr>
+calls=6 0
+192 0
+cfn=<getattr>
+calls=6 0
+192 0
+
+fn=clean_savepoints /home/wojciech/.pyenv/versions/cassandra/lib/python2.7/site-packages/django/db/backends/__init__.py:251
+251 0
+
+fn=send_execute_cql3_query /home/wojciech/.pyenv/versions/cassandra/lib/python2.7/site-packages/cql/cassandra/Cassandra.py:1785
+1785 0
+cfn=write /home/wojciech/.pyenv/versions/cassandra/lib/python2.7/site-packages/cql/cassandra/Cassandra.py:8475
+calls=1 8475
+1785 0
+cfn=__init__ /home/wojciech/.pyenv/versions/cassandra/lib/python2.7/site-packages/cql/cassandra/Cassandra.py:8441
+calls=1 8441
+1785 0
+cfn=writeMessageEnd /home/wojciech/.pyenv/versions/cassandra/lib/python2.7/site-packages/thrift/protocol/TBinaryProtocol.py:54
+calls=1 54
+1785 0
+cfn=flush /home/wojciech/.pyenv/versions/cassandra/lib/python2.7/site-packages/thrift/transport/TTransport.py:282
+calls=1 282
+1785 3
+cfn=writeMessageBegin /home/wojciech/.pyenv/versions/cassandra/lib/python2.7/site-packages/thrift/protocol/TBinaryProtocol.py:44
+calls=1 44
+1785 0
+
+fn=<genexpr> /home/wojciech/AptanaWorkspace/django_cassandra/django_cassandra/db/compiler.py:110
+110 11
+
+fn=readAll /home/wojciech/.pyenv/versions/cassandra/lib/python2.7/site-packages/thrift/transport/TTransport.py:54
+54 0
+cfn=<len>
+calls=12 0
+54 0
+cfn=read /home/wojciech/.pyenv/versions/cassandra/lib/python2.7/site-packages/thrift/transport/TSocket.py:101
+calls=2 101
+54 346
+cfn=read /home/wojciech/.pyenv/versions/cassandra/lib/python2.7/site-packages/thrift/transport/TTransport.py:266
+calls=4 266
+54 346
+
+fn=<method 'join' of 'str' objects>
+0 50
+cfn=<genexpr> /home/wojciech/AptanaWorkspace/django_cassandra/django_cassandra/db/compiler.py:106
+calls=3 106
+0 0
+
+fn=_insert /home/wojciech/.pyenv/versions/cassandra/lib/python2.7/site-packages/django/db/models/manager.py:231
+231 0
+cfn=insert_query /home/wojciech/.pyenv/versions/cassandra/lib/python2.7/site-packages/django/db/models/query.py:1503
+calls=1 1503
+231 936
+
+fn=<len>
+0 14
+
+fn=_batched_insert /home/wojciech/.pyenv/versions/cassandra/lib/python2.7/site-packages/django/db/models/query.py:822
+822 0
+cfn=<range>
+calls=1 0
+822 0
+cfn=<max>
+calls=1 0
+822 0
+cfn=bulk_batch_size /home/wojciech/.pyenv/versions/cassandra/lib/python2.7/site-packages/django/db/backends/__init__.py:701
+calls=1 701
+822 0
+cfn=db /home/wojciech/.pyenv/versions/cassandra/lib/python2.7/site-packages/django/db/models/query.py:812
+calls=2 812
+822 0
+cfn=__getitem__ /home/wojciech/.pyenv/versions/cassandra/lib/python2.7/site-packages/django/db/utils.py:192
+calls=1 192
+822 0
+cfn=_insert /home/wojciech/.pyenv/versions/cassandra/lib/python2.7/site-packages/django/db/models/manager.py:231
+calls=1 231
+822 936
+cfn=<len>
+calls=1 0
+822 0
+
+fn=_set_autocommit /home/wojciech/AptanaWorkspace/django_cassandra/django_cassandra/db/base.py:129
+129 0
+
+fn=atomic /home/wojciech/.pyenv/versions/cassandra/lib/python2.7/site-packages/django/db/transaction.py:343
+343 0
+cfn=<callable>
+calls=1 0
+343 0
+cfn=__init__ /home/wojciech/.pyenv/versions/cassandra/lib/python2.7/site-packages/django/db/transaction.py:226
+calls=1 226
+343 0
+
+fn=<genexpr> /home/wojciech/AptanaWorkspace/django_cassandra/django_cassandra/db/compiler.py:123
+123 0
+cfn=<hasattr>
+calls=2 0
+123 0
+
+fn=<zip>
+0 31
+cfn=<genexpr> /home/wojciech/AptanaWorkspace/django_cassandra/django_cassandra/db/compiler.py:111
+calls=16426 111
+0 195
+
+fn=__init__ /home/wojciech/.pyenv/versions/cassandra/lib/python2.7/site-packages/django/db/models/base.py:325
+325 177
+cfn=<setattr>
+calls=16426 0
+325 16
+cfn=send /home/wojciech/.pyenv/versions/cassandra/lib/python2.7/site-packages/django/dispatch/dispatcher.py:162
+calls=16426 162
+325 17
+cfn=<iter>
+calls=8213 0
+325 8
+cfn=<method 'get' of 'dictproxy' objects>
+calls=16426 0
+325 21
+cfn=__init__ /home/wojciech/.pyenv/versions/cassandra/lib/python2.7/site-packages/django/db/models/base.py:314
+calls=8213 314
+325 9
+cfn=<len>
+calls=16426 0
+325 14
+cfn=<isinstance>
+calls=16426 0
+325 18
+cfn=get_default /home/wojciech/.pyenv/versions/cassandra/lib/python2.7/site-packages/django/db/models/fields/__init__.py:435
+calls=16426 435
+325 52
+
+fn=<isinstance>
+0 55
+
+fn=read /home/wojciech/.pyenv/versions/cassandra/lib/python2.7/site-packages/thrift/transport/TSocket.py:101
+101 0
+cfn=<method 'recv' of '_socket.socket' objects>
+calls=2 0
+101 346
+cfn=<len>
+calls=2 0
+101 0
+
+fn=<lambda> /home/wojciech/.pyenv/versions/cassandra/lib/python2.7/site-packages/django/db/models/query.py:351
+351 17
+cfn=_get_pk_val /home/wojciech/.pyenv/versions/cassandra/lib/python2.7/site-packages/django/db/models/base.py:462
+calls=8213 462
+351 26
+
+fn=<_struct.unpack>
+0 0
+
+fn=process_execution_results /home/wojciech/.pyenv/versions/cassandra/lib/python2.7/site-packages/cql/thrifteries.py:109
+109 0
+
+fn=read /home/wojciech/.pyenv/versions/cassandra/lib/python2.7/site-packages/thrift/transport/TTransport.py:266
+266 0
+cfn=<method 'read' of 'cStringIO.StringI' objects>
+calls=5 0
+266 0
+cfn=readFrame /home/wojciech/.pyenv/versions/cassandra/lib/python2.7/site-packages/thrift/transport/TTransport.py:274
+calls=1 274
+266 346
+cfn=<len>
+calls=4 0
+266 0
+
+fn=<thrift.protocol.fastbinary.encode_binary>
+0 0
+
+fn=writeMessageBegin /home/wojciech/.pyenv/versions/cassandra/lib/python2.7/site-packages/thrift/protocol/TBinaryProtocol.py:44
+44 0
+cfn=writeString /home/wojciech/.pyenv/versions/cassandra/lib/python2.7/site-packages/thrift/protocol/TBinaryProtocol.py:121
+calls=1 121
+44 0
+cfn=writeI32 /home/wojciech/.pyenv/versions/cassandra/lib/python2.7/site-packages/thrift/protocol/TBinaryProtocol.py:109
+calls=2 109
+44 0
+
+fn=__init__ /home/wojciech/.pyenv/versions/cassandra/lib/python2.7/site-packages/django/db/models/sql/query.py:105
+105 0
+cfn=__init__ /home/wojciech/.pyenv/versions/cassandra/lib/python2.7/site-packages/django/utils/tree.py:18
+calls=4 18
+105 0
+cfn=__init__ /home/wojciech/.pyenv/versions/cassandra/lib/python2.7/site-packages/django/utils/datastructures.py:127
+calls=4 127
+105 0
+cfn=__new__ /home/wojciech/.pyenv/versions/cassandra/lib/python2.7/site-packages/django/utils/datastructures.py:122
+calls=4 122
+105 0
+
+fn=__init__ /home/wojciech/.pyenv/versions/cassandra/lib/python2.7/site-packages/cql/cursor.py:30
+30 0
+
+fn=execute /home/wojciech/.pyenv/versions/cassandra/lib/python2.7/site-packages/django/db/backends/util.py:46
+46 0
+cfn=__exit__ /home/wojciech/.pyenv/versions/cassandra/lib/python2.7/site-packages/django/db/utils.py:72
+calls=1 72
+46 0
+cfn=set_dirty /home/wojciech/.pyenv/versions/cassandra/lib/python2.7/site-packages/django/db/backends/__init__.py:385
+calls=1 385
+46 0
+cfn=validate_no_broken_transaction /home/wojciech/.pyenv/versions/cassandra/lib/python2.7/site-packages/django/db/backends/__init__.py:362
+calls=1 362
+46 0
+cfn=execute /home/wojciech/AptanaWorkspace/django_cassandra/django_cassandra/db/patch.py:67
+calls=1 67
+46 380
+cfn=__enter__ /home/wojciech/.pyenv/versions/cassandra/lib/python2.7/site-packages/django/db/utils.py:69
+calls=1 69
+46 0
+
+fn=get_default /home/wojciech/.pyenv/versions/cassandra/lib/python2.7/site-packages/django/db/models/fields/__init__.py:435
+435 35
+cfn=has_default /home/wojciech/.pyenv/versions/cassandra/lib/python2.7/site-packages/django/db/models/fields/__init__.py:429
+calls=16426 429
+435 17
+
+fn=ensure_connection /home/wojciech/.pyenv/versions/cassandra/lib/python2.7/site-packages/django/db/backends/__init__.py:118
+118 0
+
+fn=<method 'disable' of '_lsprof.Profiler' objects>
+0 0
+
+fn=<method 'send' of '_socket.socket' objects>
+0 2
+
