@@ -94,6 +94,10 @@ Model fields:
 
 - TimeField
 
+Additional model fields:
+
+- TimeUUIDField(auto=False)
+
 Options for the fields:
 
 - db_index
@@ -109,7 +113,7 @@ Fields:
 
 Model objects:
 
-- change the primary key in object
+- change the primary key in object(update object)
 
 Tests
 =====

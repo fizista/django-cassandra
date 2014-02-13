@@ -4,6 +4,7 @@
 from __future__ import absolute_import, division, print_function, unicode_literals
 
 from django.db import models
+from django_cassandra import fields
 
 
 # Defined primary key
@@ -33,7 +34,9 @@ class DataFields(models.Model):
     time_field = models.TimeField('Date Time')
     date_field = models.DateField('Date')
     char_field = models.CharField('Char', max_length=200)
-    text_field = models.CharField('Char', max_length=200)
+    text_field = models.TextField('Char', max_length=200)
+    timeuuid_field = fields.TimeUUIDField('Time UUID')
+    timeuuid_auto_field = fields.TimeUUIDField('Time UUID', auto=True)
 
 # Defined primary key
 class DataBenchmark(models.Model):

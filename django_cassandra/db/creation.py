@@ -11,10 +11,6 @@ from django.db.backends.util import truncate_name
 
 
 class DatabaseCreation(BaseDatabaseCreation):
-    # This dictionary maps Field objects to their associated PostgreSQL column
-    # types, as strings. Column-type strings can contain format strings; they'll
-    # be interpolated against the values of Field.__dict__ before being output.
-    # If a column type is set to None, it won't be included in the output.
     data_types = {
         'AutoField': 'timeuuid',
         'BooleanField': 'boolean',
@@ -23,7 +19,7 @@ class DatabaseCreation(BaseDatabaseCreation):
         'DateTimeField': 'timestamp',
         'DecimalField': 'double',
         'FileField': 'varchar',
-        'FilePathField': 'varchar)',
+        'FilePathField': 'varchar',
         'FloatField': 'double',
         'IntegerField': 'int',
         'IPAddressField': 'inet',
@@ -35,6 +31,7 @@ class DatabaseCreation(BaseDatabaseCreation):
         'SmallIntegerField': 'int',
         'TextField': 'text',
         'TimeField': 'bigint',
+        'TimeUUIDField': 'timeuuid',
     }
 
     data_type_check_constraints = {

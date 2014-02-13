@@ -4,8 +4,23 @@
 from __future__ import absolute_import, division, print_function, unicode_literals
 
 import datetime
+import time_uuid
 
 from django.db.backends import BaseDatabaseOperations
+
+
+def datetime_to_cassandra_timestamp(value):
+    """
+    Args:
+        value - < datetime.datetime >
+    
+    Return:
+        long - cassandra timestamp 
+    """
+    start_point = datetime.datetime(1970, 1, 1, tzinfo=value.tzinfo)
+    offset = start_point.tzinfo.utcoffset(start_point).total_seconds() \
+        if start_point.tzinfo else 0
+    return long(((value - start_point).total_seconds() - offset) * 1000)
 
 
 class DatabaseOperations(BaseDatabaseOperations):
@@ -53,10 +68,7 @@ class DatabaseOperations(BaseDatabaseOperations):
     def value_to_db_datetime(self, value):
         if value is None:
             return None
-        start_point = datetime.datetime(1970, 1, 1, tzinfo=value.tzinfo)
-        offset = start_point.tzinfo.utcoffset(start_point).total_seconds() \
-            if start_point.tzinfo else 0
-        return str(long(((value - start_point).total_seconds() - offset) * 1000))
+        return str(datetime_to_cassandra_timestamp(value))
 
     def value_to_db_time(self, value):
         if value is None:
@@ -74,6 +86,8 @@ class DatabaseOperations(BaseDatabaseOperations):
         if value is None or field is None:
             return value
 
+
+
         internal_type = field.get_internal_type()
 
         if internal_type == 'FloatField':
@@ -85,6 +99,9 @@ class DatabaseOperations(BaseDatabaseOperations):
         if value in (1, 0) and field and internal_type in \
             ('BooleanField', 'NullBooleanField'):
             value = bool(value)
+
+        if internal_type == 'TimeUUIDField':
+            return time_uuid.TimeUUID.convert(value)
 
         if internal_type == 'TimeField':
             internal_microseconds = value

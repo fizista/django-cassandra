@@ -1,7 +1,9 @@
 import re
+import six
 
 from django.db.models.sql import compiler
 from django.utils.six.moves import zip_longest
+from django.db.utils import DatabaseError
 
 
 class Counter(object):
@@ -62,8 +64,110 @@ class SQLCompiler(compiler.SQLCompiler):
                   for v, f in zip(row, fields)]
         return tuple(values)
 
+    def _as_sql(self, with_limits=True, with_col_aliases=False):
+        """
+        Creates the SQL for this query. Returns the SQL string and list of
+        parameters.
+
+        If 'with_limits' is False, any limit/offset information is not included
+        in the query.
+        """
+        if with_limits and self.query.low_mark == self.query.high_mark:
+            return '', ()
+
+        self.pre_sql_setup()
+        # After executing the query, we must get rid of any joins the query
+        # setup created. So, take note of alias counts before the query ran.
+        # However we do not want to get rid of stuff done in pre_sql_setup(),
+        # as the pre_sql_setup will modify query state in a way that forbids
+        # another run of it.
+        self.refcounts_before = self.query.alias_refcount.copy()
+        out_cols, s_params = self.get_columns(with_col_aliases)
+        ordering, o_params, ordering_group_by = self.get_ordering()
+
+        distinct_fields = self.get_distinct()
+
+        # This must come after 'select', 'ordering' and 'distinct' -- see
+        # docstring of get_from_clause() for details.
+        from_, f_params = self.get_from_clause()
+
+        qn = self.quote_name_unless_alias
+
+        where, w_params = self.query.where.as_sql(qn=qn, connection=self.connection)
+        having, h_params = self.query.having.as_sql(qn=qn, connection=self.connection)
+        having_group_by = self.query.having.get_cols()
+        params = []
+        for val in six.itervalues(self.query.extra_select):
+            params.extend(val[1])
+
+        result = ['SELECT']
+
+        if self.query.distinct:
+            result.append(self.connection.ops.distinct_sql(distinct_fields))
+        params.extend(o_params)
+        result.append(', '.join(out_cols + self.ordering_aliases))
+        params.extend(s_params)
+        params.extend(self.ordering_params)
+
+        result.append('FROM')
+        result.extend(from_)
+        params.extend(f_params)
+
+        if where:
+            result.append('WHERE %s' % where)
+            params.extend(w_params)
+
+        grouping, gb_params = self.get_grouping(having_group_by, ordering_group_by)
+        if grouping:
+            raise DatabaseError('Grupping is not supported on this database backend.')
+
+        if having:
+            raise DatabaseError('Having is not supported on this database backend.')
+
+        grouping, gb_params = self.get_grouping(having_group_by, ordering_group_by)
+#        if grouping:
+#            if distinct_fields:
+#                raise NotImplementedError(
+#                    "annotate() + distinct(fields) not implemented.")
+#            if not ordering:
+#                ordering = self.connection.ops.force_no_ordering()
+#            result.append('GROUP BY %s' % ', '.join(grouping))
+#            params.extend(gb_params)
+#
+#        if having:
+#            result.append('HAVING %s' % having)
+#            params.extend(h_params)
+
+        if where and ordering:
+            result.append('ORDER BY %s' % ', '.join(ordering))
+
+        if with_limits:
+            if self.query.high_mark is not None:
+                result.append('LIMIT %d' % (self.query.high_mark - self.query.low_mark))
+            if self.query.low_mark:
+                raise DatabaseError('OFFSET is not supported on this database backend.')
+#                if self.query.high_mark is None:
+#                    val = self.connection.ops.no_limit_value()
+#                    if val:
+#                        result.append('LIMIT %d' % val)
+#                result.append('OFFSET %d' % self.query.low_mark)
+
+        if self.query.select_for_update and self.connection.features.has_select_for_update:
+            # If we've been asked for a NOWAIT query but the backend does not support it,
+            # raise a DatabaseError otherwise we could get an unexpected deadlock.
+            nowait = self.query.select_for_update_nowait
+            if nowait and not self.connection.features.has_select_for_update_nowait:
+                raise DatabaseError('NOWAIT is not supported on this database backend.')
+            result.append(self.connection.ops.for_update_sql(nowait=nowait))
+
+        # Finally do cleanup - get rid of the joins we created above.
+        self.query.reset_refcounts(self.refcounts_before)
+
+        return ' '.join(result), tuple(params)
+
     def as_sql(self):
-        query, params = super(SQLCompiler, self).as_sql()
+        #query, params = super(SQLCompiler, self).as_sql()
+        query, params = self._as_sql()
 
         if params:
             # correct parameters "%s" => :d<x>, where x = 1,2,3,...
@@ -167,7 +271,6 @@ class SQLDeleteCompiler(compiler.SQLDeleteCompiler, SQLCompiler):
 
 
 class SQLUpdateCompiler(compiler.SQLUpdateCompiler, SQLCompiler):
-
     as_sql = SQLCompiler.as_sql
 
 

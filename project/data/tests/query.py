@@ -218,6 +218,7 @@ class QueryTest(TestCase):
 
         primary_key = 1
 
+        date_start = datetime.datetime.now()
         datafields_object = models.DataFields()
         datafields_object.id = primary_key
         datafields_object.integer_field = 123456789
@@ -226,7 +227,9 @@ class QueryTest(TestCase):
         datafields_object.date_field = datetime.datetime(1999, 12, 30)
         datafields_object.char_field = 'abcdABCD'
         datafields_object.text_field = 'abcdABCD'
+        datafields_object.timeuuid_field = datetime.datetime(1999, 12, 30, 23, 59, 59)
         datafields_object.save()
+        date_end = datetime.datetime.now()
 
         del datafields_object
 
@@ -255,4 +258,12 @@ class QueryTest(TestCase):
         self.assertEqual(
             datafields_object_db.text_field,
             'abcdABCD')
+
+        self.assertEqual(
+            datafields_object_db.timeuuid_field.get_datetime(),
+            datetime.datetime(1999, 12, 30, 23, 59, 59))
+
+        db_date = datafields_object_db.timeuuid_auto_field.get_datetime()
+        self.assertTrue(db_date > date_start)
+        self.assertTrue(db_date < date_end)
 
